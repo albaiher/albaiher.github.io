@@ -143,7 +143,7 @@ function loadCubo(lado)
               20,21,22, 22,23,20  // Bottom
                  ];
 
-  scene.add( new THREE.DirectionalLight() );
+    scene.add(new THREE.AmbientLight());
 
   // Geometria por att arrays en r140
   malla.setIndex( indices );
@@ -180,7 +180,7 @@ function update()
     let deltaTime = clock.getDelta()
     // Movimiento propio del cubo
     cubo.rotation.y += angulo * deltaTime;
-    cubo.rotation.x += angulo / 2 * deltaTime;
+    cubo.rotation.x += (angulo * deltaTime) / 2  ;
 }
 
 function render()
