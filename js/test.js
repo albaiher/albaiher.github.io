@@ -21,7 +21,8 @@
 
 var renderer, scene, camera, cubo;
 var cameraControls;
-var angulo = -0.01;
+var angulo = -0.1;
+var clock = new THREE.Clock(true);
 
 init();
 loadCubo(1.0);
@@ -160,7 +161,8 @@ function loadCubo(lado)
   cubo = new THREE.Mesh( malla, material );
 
 	// Añade el objeto grafico a la escena
-	scene.add( cubo );
+    scene.add(cubo);
+    clock.start()
 }
 
 function updateAspectRatio()
@@ -172,12 +174,13 @@ function updateAspectRatio()
 
 function update()
 {
-  // Cambios para actualizar la camara segun mvto del raton
-  cameraControls.update();
+    // Cambios para actualizar la camara segun mvto del raton
+    cameraControls.update();
 
-  // Movimiento propio del cubo
-  cubo.rotation.y += angulo;
-  cubo.rotation.x += angulo/2;
+    let deltaTime = clock.getDelta()
+    // Movimiento propio del cubo
+    cubo.rotation.y += angulo * deltaTime;
+    cubo.rotation.x += angulo / 2 * deltaTime;
 }
 
 function render()
