@@ -1,0 +1,169 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v3.4.50",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Cone",
+            "rotation" : [
+                0.8530965447425842,
+                0,
+                0,
+                0.5217531323432922
+            ],
+            "scale" : [
+                1.2422680854797363,
+                0.9423157572746277,
+                1.2422680854797363
+            ],
+            "translation" : [
+                0.0576092004776001,
+                0.1734829545021057,
+                0.25407370924949646
+            ]
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "name" : "Dice",
+            "pbrMetallicRoughness" : {}
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Cone.001",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1
+                    },
+                    "indices" : 2,
+                    "material" : 0
+                },
+                {
+                    "attributes" : {
+                        "POSITION" : 3,
+                        "NORMAL" : 4
+                    },
+                    "indices" : 5,
+                    "material" : 0
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 7677,
+            "max" : [
+                0.7774479389190674,
+                0.8196399211883545,
+                0.46833789348602295
+            ],
+            "min" : [
+                -0.7773783206939697,
+                -1.0000035762786865,
+                -0.9043558835983276
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 7677,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5123,
+            "count" : 14559,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5126,
+            "count" : 35534,
+            "max" : [
+                0.6477040648460388,
+                0.5525758862495422,
+                0.46741920709609985
+            ],
+            "min" : [
+                -0.7071969509124756,
+                -1.0317602157592773,
+                -0.7696099281311035
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 4,
+            "componentType" : 5126,
+            "count" : 35534,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 5,
+            "componentType" : 5123,
+            "count" : 53052,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 92124,
+            "byteOffset" : 0,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 92124,
+            "byteOffset" : 92124,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 29118,
+            "byteOffset" : 184248,
+            "target" : 34963
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 426408,
+            "byteOffset" : 213368,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 426408,
+            "byteOffset" : 639776,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 106104,
+            "byteOffset" : 1066184,
+            "target" : 34963
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 1172288,
+            "uri" : "d4.bin"
+        }
+    ]
+}

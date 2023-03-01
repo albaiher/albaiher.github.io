@@ -1,0 +1,11 @@
+Model Information:
+* title:	Dungeons And Dragons Dice Set
+* source:	https://sketchfab.com/3d-models/dungeons-and-dragons-dice-set-163950cff9694fe1a686d22fe7737236
+* author:	JayDesigns3D (https://sketchfab.com/JayDesigns)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Dungeons And Dragons Dice Set" (https://sketchfab.com/3d-models/dungeons-and-dragons-dice-set-163950cff9694fe1a686d22fe7737236) by JayDesigns3D (https://sketchfab.com/JayDesigns) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

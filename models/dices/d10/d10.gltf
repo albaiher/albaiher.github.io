@@ -1,0 +1,186 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v3.4.50",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "d10",
+            "rotation" : [
+                0.32756149768829346,
+                0.8725880980491638,
+                -0.2408502846956253,
+                0.2707113027572632
+            ],
+            "scale" : [
+                0.6781135201454163,
+                0.6781135201454163,
+                0.6781135201454163
+            ],
+            "translation" : [
+                0,
+                0.7784745097160339,
+                0
+            ]
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "name" : "Dice",
+            "pbrMetallicRoughness" : {}
+        },
+        {
+            "doubleSided" : true,
+            "emissiveFactor" : [
+                0.43305501341819763,
+                0.058529697358608246,
+                0.015158036723732948
+            ],
+            "name" : "Numbers",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0,
+                    0,
+                    0,
+                    1
+                ]
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Cylinder",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1
+                    },
+                    "indices" : 2,
+                    "material" : 0
+                },
+                {
+                    "attributes" : {
+                        "POSITION" : 3,
+                        "NORMAL" : 4
+                    },
+                    "indices" : 5,
+                    "material" : 1
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 16846,
+            "max" : [
+                1.3311195373535156,
+                1.3456401824951172,
+                1.3907835483551025
+            ],
+            "min" : [
+                -1.331119179725647,
+                -1.3456401824951172,
+                -1.3907835483551025
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 16846,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5123,
+            "count" : 32682,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5126,
+            "count" : 71098,
+            "max" : [
+                1.1262531280517578,
+                0.8070481419563293,
+                1.1485722064971924
+            ],
+            "min" : [
+                -1.1638613939285278,
+                -0.7461051940917969,
+                -1.1235368251800537
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 4,
+            "componentType" : 5126,
+            "count" : 71098,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 5,
+            "componentType" : 5125,
+            "count" : 105444,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 202152,
+            "byteOffset" : 0,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 202152,
+            "byteOffset" : 202152,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 65364,
+            "byteOffset" : 404304,
+            "target" : 34963
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 853176,
+            "byteOffset" : 469668,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 853176,
+            "byteOffset" : 1322844,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 421776,
+            "byteOffset" : 2176020,
+            "target" : 34963
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 2597796,
+            "uri" : "d10.bin"
+        }
+    ]
+}
