@@ -1,5 +1,3 @@
-import { GLTFLoader } from '../lib/GLTFLoader.js';
-
 /**
   test.js
   Ejemplo Three.js_r140: Cubo RGB con iluminacion y textura
@@ -197,5 +195,3 @@ function render()
 	update();
 	renderer.render( scene, camera );
 }
-
-export { loadCubo };
