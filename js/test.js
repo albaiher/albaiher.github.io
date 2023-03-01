@@ -19,10 +19,14 @@
   @author rvivo@upv.es (c) Libre para fines docentes
 */
 
+
+import { GLTFLoader } from '../lib/GLTFLoader.js';
+
 var renderer, scene, camera, cubo;
 var cameraControls;
 var angulo = -0.1;
 var clock = new THREE.Clock(true);
+var loader = new GLTFLoader();
 
 init();
 loadCubo(1.0);
@@ -153,15 +157,20 @@ function loadCubo(lado)
   malla.setAttribute( 'uv', new THREE.Float32BufferAttribute(uvs,2));
 
   // Configura un material
-  var textura = new THREE.TextureLoader().load( 'images/ilovecg.png' );
-  var material = new THREE.MeshLambertMaterial( { vertexColors: true, map: textura, side: THREE.DoubleSide } );
+  // var textura = new THREE.TextureLoader().load( 'images/ilovecg.png' );
+  // var material = new THREE.MeshLambertMaterial( { vertexColors: true, map: textura, side: THREE.DoubleSide } );
 
-  // Construye el objeto grafico 
-  console.log(malla);   //-> Puedes consultar la estructura del objeto
-  cubo = new THREE.Mesh( malla, material );
+    loader.load("../models/dices/d6/d6.gltf", function (gltf) {
+        scene.add(gltf.scene);
+    }, function (xhr) {
 
-	// Añade el objeto grafico a la escena
-    scene.add(cubo);
+        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+
+    }, function (error) {
+        console.log(error)
+    });
+
+
     clock.start()
 }
 
