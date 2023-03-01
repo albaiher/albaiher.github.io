@@ -22,6 +22,7 @@
 
 import * as THREE from "../lib/three.module.js";
 import { GLTFLoader } from "../lib/GLTFLoader.module.js";
+import { OrbitControls } from "../lib/OrbitControls.module.js";
 
 var renderer, scene, camera, cubo;
 var cameraControls;
@@ -47,7 +48,7 @@ function init()
   camera.position.set( 1, 1.5, 2 );
   camera.lookAt(0,0,0);
 
-  cameraControls = new THREE.OrbitControls( camera, renderer.domElement );
+    cameraControls = new OrbitControls(camera, renderer.domElement);
   cameraControls.target.set( 0, 0, 0 );
 
   window.addEventListener('resize', updateAspectRatio );
