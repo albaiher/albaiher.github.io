@@ -24,7 +24,7 @@ import * as THREE from "../lib/three.module.js";
 import { GLTFLoader } from "../lib/GLTFLoader.module.js";
 import { OrbitControls } from "../lib/OrbitControls.module.js";
 
-var renderer, scene, camera, cubo;
+var renderer, scene, camera, d6;
 var cameraControls;
 var angulo = -0.1;
 var clock = new THREE.Clock(true);
@@ -56,6 +56,7 @@ function init()
 
 function loadCubo(lado)
 {
+    d6 = new THREE.Object3D();
   // Instancia el objeto BufferGeometry
 	var malla = new THREE.BufferGeometry();
   // Construye la lista de coordenadas y colores por vertice
@@ -163,7 +164,10 @@ function loadCubo(lado)
   // var material = new THREE.MeshLambertMaterial( { vertexColors: true, map: textura, side: THREE.DoubleSide } );
 
     loader.load("../models/dices/d6/d6.gltf", function (gltf) {
-        scene.add(gltf.scene);
+        d6 = gltf.scene;
+        model.name = "d6";
+
+        scene.add(d6);
     }, function (xhr) {
 
         console.log((xhr.loaded / xhr.total * 100) + '% loaded');
@@ -190,8 +194,8 @@ function update()
 
     let deltaTime = clock.getDelta()
     // Movimiento propio del cubo
-    cubo.rotation.y += angulo * deltaTime;
-    cubo.rotation.x += (angulo * deltaTime) / 2  ;
+    d6.rotation.y += angulo * deltaTime;
+    d6.rotation.x += (angulo * deltaTime) / 2;
 }
 
 function render()
