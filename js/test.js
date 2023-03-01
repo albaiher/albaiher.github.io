@@ -1,3 +1,5 @@
+import { GLTFLoader } from '../lib/GLTFLoader.js';
+
 /**
   test.js
   Ejemplo Three.js_r140: Cubo RGB con iluminacion y textura
@@ -18,9 +20,6 @@
 
   @author rvivo@upv.es (c) Libre para fines docentes
 */
-
-
-import { GLTFLoader } from '../lib/GLTFLoader.js';
 
 var renderer, scene, camera, cubo;
 var cameraControls;
@@ -198,3 +197,5 @@ function render()
 	update();
 	renderer.render( scene, camera );
 }
+
+export { loadCubo };
