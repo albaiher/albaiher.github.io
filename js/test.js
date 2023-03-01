@@ -165,7 +165,7 @@ function loadCubo(lado)
 
     loader.load("../models/dices/d6/d6.gltf", function (gltf) {
         d6 = gltf.scene;
-        model.name = "d6";
+        d6.name = "d6";
 
         scene.add(d6);
     }, function (xhr) {
