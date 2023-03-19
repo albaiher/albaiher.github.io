@@ -31,7 +31,7 @@ export class D6 extends Dice {
 
     getDiceValue() {}
 
-    loadDice(){
+    loadDice(scene){
         let vertices = [[-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1],
                 [-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1]];
         let faces = [[0, 3, 2, 1, 1], [1, 2, 6, 5, 2], [0, 1, 5, 4, 3],
@@ -42,14 +42,12 @@ export class D6 extends Dice {
         this.loader.load("../../models/dices/d6/d6.gltf", function (gltf) {
             
             dice = gltf.scene
-            console.log(dice)
-            
+            this.threeDice = dice
+            scene.add(this.threeDice)
+
         }, undefined, function (error) {
             console.log(error)
         });
-
-        this.threeDice = dice
-        console.log(this.threeDice)
         this.cannonDice = this.createCannonShape(vertices, faces, radius)
     }
 }
