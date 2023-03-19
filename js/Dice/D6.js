@@ -32,7 +32,7 @@ export class D6 extends Dice {
 
     getDiceValue() {}
 
-    loadDice(scene){
+    loadDice(){
         let vertices = [[-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1],
                 [-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1]];
         let faces = [[0, 3, 2, 1, 1], [1, 2, 6, 5, 2], [0, 1, 5, 4, 3],
@@ -41,7 +41,7 @@ export class D6 extends Dice {
 
         this.loader.load("../../models/dices/d6/d6.gltf", (gltf) => {
             this.threeDice = gltf.scene
-            this.scene.add(threeDice)
+            this.scene.add(this.threeDice)
         }, 
         undefined, 
         function (error) {
