@@ -6,7 +6,7 @@ export class Dice {
     
     constructor(){
         this.loader = new GLTFLoader()
-        this.dice = new THREE.Object3D()
+        this.threeDice
         this.valueRange
         this.mass
         this.inertia

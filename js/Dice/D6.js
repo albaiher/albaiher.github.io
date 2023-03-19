@@ -38,7 +38,7 @@ export class D6 extends Dice {
                 [3, 7, 6, 2, 4], [0, 4, 7, 3, 5], [4, 5, 6, 7, 6]];
         let radius = this.scale * 0.9
 
-        let dice
+        let dice = new THREE.Object3D()
         this.loader.load("../../models/dices/d6/d6.gltf", function (gltf) {
             
             dice = gltf.scene
