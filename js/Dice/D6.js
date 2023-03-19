@@ -40,14 +40,9 @@ export class D6 extends Dice {
 
         this.loader.load("../../models/dices/d6/d6.gltf", function (gltf) {
             
-            this.threeDice = gltf.scene
+            this.threeDice.scene = gltf.scene
             this.cannonDice = createCannonShape(vertices, faces, radius)
-        }, function (xhr) {
-        
-            console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-        
-        }, function (error) {
-            
+        }, undefined, function (error) {
             console.log(error)
         });
     }
