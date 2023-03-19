@@ -1,5 +1,3 @@
-import * as THREE from "../../lib/three.module.js";
-import { GLTFLoader } from "../../lib/GLTFLoader.module.js";
 import * as CANNON from "../../lib/cannon-es.module.js"
 import { Dice } from "./Dice.js";
 
@@ -7,6 +5,7 @@ export class D6 extends Dice {
     
     constructor(){
         super()
+        this.dice = new THREE.Object3D()
         this.valueRange = [1, 6]
         this.mass = 300
         this.inertia = 13
@@ -40,7 +39,7 @@ export class D6 extends Dice {
 
         this.loader.load("../../models/dices/d6/d6.gltf", function (gltf) {
             
-            this.dice = gltf.scene
+            this.dice.scene = gltf.scene
             this.cannonDice = createCannonShape(vertices, faces, radius)
         }, function (xhr) {
         
