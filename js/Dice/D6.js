@@ -39,16 +39,14 @@ export class D6 extends Dice {
                 [3, 7, 6, 2, 4], [0, 4, 7, 3, 5], [4, 5, 6, 7, 6]];
         let radius = this.scale * 0.9
 
-        this.loader.load("../../models/dices/d6/d6.gltf", this.onLoad, 
+        this.loader.load("../../models/dices/d6/d6.gltf", (gltf) => {
+            this.threeDice = gltf.scene
+            this.scene.add(threeDice)
+        }, 
         undefined, 
         function (error) {
             console.log(error)
         });
         this.cannonDice = this.createCannonShape(vertices, faces, radius)
-    }
-
-    onLoad(gltf) {     
-        this.threeDice = gltf.scene
-        this.scene.add(threeDice)
-    }
+    } 
 }
