@@ -4,13 +4,14 @@ import { Dice } from "./Dice.js";
 
 export class D6 extends Dice {
     
-    constructor(){
+    constructor(scene){
         super()
         this.threeDice = new THREE.Object3D()
         this.valueRange = [1, 6]
         this.mass = 300
         this.inertia = 13
         this.scale = 50
+        this.scene = scene
         this.cannonDice
     }
 
@@ -38,7 +39,7 @@ export class D6 extends Dice {
                 [3, 7, 6, 2, 4], [0, 4, 7, 3, 5], [4, 5, 6, 7, 6]];
         let radius = this.scale * 0.9
 
-        this.loader.load("../../models/dices/d6/d6.gltf", this.updateThreeDice(gltf, scene), 
+        this.loader.load("../../models/dices/d6/d6.gltf", this.onLoad, 
         undefined, 
         function (error) {
             console.log(error)
@@ -46,8 +47,8 @@ export class D6 extends Dice {
         this.cannonDice = this.createCannonShape(vertices, faces, radius)
     }
 
-    updateThreeDice(gltf, scene) {     
+    onLoad(gltf) {     
         this.threeDice = gltf.scene
-        scene.add(threeDice)
+        this.scene.add(threeDice)
     }
 }
