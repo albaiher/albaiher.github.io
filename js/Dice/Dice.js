@@ -32,4 +32,6 @@ export class Dice {
     getDiceValue() {}
 
     loadDice() {}
+
+    standbyAnimation() {}
 }

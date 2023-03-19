@@ -3,7 +3,7 @@ import { GLTFLoader } from "../lib/GLTFLoader.module.js";
 import { OrbitControls } from "../lib/OrbitControls.module.js";
 import { D6 } from "./Dice/D6.js";
 
-var renderer, scene, camera, d6
+var renderer, scene, camera, d6 = new D6(scene);
 var cameraControls
 var angulo = -0.1
 var clock = new THREE.Clock(true)
@@ -35,7 +35,6 @@ function init()
 }
 
 function loadD6(){
-  let d6 = new D6(scene);
   d6.loadDice();
 }
 function updateAspectRatio()
@@ -51,6 +50,7 @@ function update()
     cameraControls.update()
 
     let deltaTime = clock.getDelta()
+    d6.standbyAnimation(deltaTime)
 }
 
 function render()

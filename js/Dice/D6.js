@@ -49,4 +49,9 @@ export class D6 extends Dice {
         });
         this.cannonDice = this.createCannonShape(vertices, faces, radius)
     } 
+
+    standbyAnimation(deltaTime){
+        this.threeDice.rotation.y = 2 * deltaTime
+
+    }
 }
