@@ -39,15 +39,16 @@ export class D6 extends Dice {
         let radius = this.scale * 0.9
 
         let dice = new THREE.Object3D()
-        this.loader.load("../../models/dices/d6/d6.gltf", function (gltf) {
-            
-            dice = gltf.scene
-            this.threeDice = dice
-            scene.add(this.threeDice)
-
-        }, undefined, function (error) {
+        this.loader.load("../../models/dices/d6/d6.gltf", updateThreeDice(gltf, scene), 
+        undefined, 
+        function (error) {
             console.log(error)
         });
         this.cannonDice = this.createCannonShape(vertices, faces, radius)
+    }
+
+    updateThreeDice(gltf, scene) {     
+        this.threeDice = gltf.scene
+        scene.add(threeDice)
     }
 }
