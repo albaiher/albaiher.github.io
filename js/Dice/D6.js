@@ -42,12 +42,14 @@ export class D6 extends Dice {
         this.loader.load("../../models/dices/d6/d6.gltf", function (gltf) {
             
             dice = gltf.scene
+            console.log(dice)
             
         }, undefined, function (error) {
             console.log(error)
         });
 
         this.threeDice = dice
+        console.log(this.threeDice)
         this.cannonDice = this.createCannonShape(vertices, faces, radius)
     }
 }

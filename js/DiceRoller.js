@@ -37,6 +37,7 @@ function init()
 function loadD6(){
   let d6 = new D6();
   d6.loadDice();
+  console.log(d6)
   scene.add(d6.threeDice)
 }
 function updateAspectRatio()
