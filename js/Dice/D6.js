@@ -6,7 +6,7 @@ export class D6 extends Dice {
     
     constructor(){
         super()
-        this.threeDice
+        this.threeDice = new THREE.Object3D()
         this.valueRange = [1, 6]
         this.mass = 300
         this.inertia = 13
@@ -37,8 +37,7 @@ export class D6 extends Dice {
         let faces = [[0, 3, 2, 1, 1], [1, 2, 6, 5, 2], [0, 1, 5, 4, 3],
                 [3, 7, 6, 2, 4], [0, 4, 7, 3, 5], [4, 5, 6, 7, 6]];
         let radius = this.scale * 0.9
-
-        let dice = new THREE.Object3D()
+        
         this.loader.load("../../models/dices/d6/d6.gltf", updateThreeDice(gltf, scene), 
         undefined, 
         function (error) {
