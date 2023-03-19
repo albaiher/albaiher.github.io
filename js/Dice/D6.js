@@ -6,7 +6,7 @@ export class D6 extends Dice {
     
     constructor(){
         super()
-        this.threeDice = new THREE.Object3D()
+        this.threeDice
         this.valueRange = [1, 6]
         this.mass = 300
         this.inertia = 13
@@ -40,10 +40,12 @@ export class D6 extends Dice {
 
         this.loader.load("../../models/dices/d6/d6.gltf", function (gltf) {
             
-            this.threeDice.scene = gltf.scene
-            this.cannonDice = createCannonShape(vertices, faces, radius)
+            this.threeDice = gltf.scene
+            
         }, undefined, function (error) {
             console.log(error)
         });
+
+        this.cannonDice = createCannonShape(vertices, faces, radius)
     }
 }
