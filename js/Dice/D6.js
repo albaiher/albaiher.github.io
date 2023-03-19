@@ -51,7 +51,7 @@ export class D6 extends Dice {
     } 
 
     standbyAnimation(deltaTime){
-        this.threeDice.rotation.y = 2 * deltaTime
+        this.threeDice.rotation.y += 0.1 * deltaTime
 
     }
 }
