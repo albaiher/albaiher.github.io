@@ -16,6 +16,8 @@ var cameraControls
 var clock = new THREE.Clock(true)
 var loader = new GLTFLoader()
 var d4Body
+var suelo
+var path = "../images/"
 
 initializeEnvironment()
 loadMenu()
@@ -44,10 +46,26 @@ function initializeEnvironment()
   ground.quaternion.setFromAxisAngle(new CANNON.Vec3(1,0,0),-Math.PI/2);
   world.addBody(ground);
 
-  const suelo = new THREE.Mesh( new THREE.PlaneGeometry(10,10,1,1), new THREE.MeshNormalMaterial());
+  suelo = new THREE.Mesh( new THREE.PlaneGeometry(10,10,1,1), new THREE.MeshNormalMaterial());
 	suelo.rotation.x = -Math.PI/2;
 	suelo.position.y = -0.25;
 	scene.add( suelo);
+
+  const paredes = [];
+  paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                map: new THREE.TextureLoader().load(path+"px.png")}) );
+  paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                map: new THREE.TextureLoader().load(path+"nx.png")}) );
+  paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                map: new THREE.TextureLoader().load(path+"py.png")}) );
+  paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                map: new THREE.TextureLoader().load(path+"ny.png")}) );
+  paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                map: new THREE.TextureLoader().load(path+"pz.png")}) );
+  paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                map: new THREE.TextureLoader().load(path+"nz.jpg")}) );
+  const habitacion = new THREE.Mesh( new THREE.BoxGeometry(60,60,60),paredes);
+  scene.add(habitacion);
 
   initializeCameras();
   initializeLights()
@@ -92,14 +110,6 @@ function loadDiceMenu(){
   let increment = new THREE.Vector3(2, 0 ,0)
 
   d4Menu.loadDice(position)
-
-  d4Body = new CANNON.Body({
-    mass: d4Menu.mass,
-    shape: d4Menu.cannonDice,
-  });
-  
-  world.addBody(d4Body);
-
   position.add(increment)
   d6Menu.loadDice(position)
   position.add(increment)
