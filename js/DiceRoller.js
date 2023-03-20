@@ -9,15 +9,16 @@ import { D10 } from "./Dice/D10.js";
 import { D12 } from "./Dice/D12.js";
 import { D20 } from "./Dice/D20.js";
 
+const pathImages = "../images/"
+
 var renderer, scene, camera, world
 var d4Menu, d6Menu, d10Menu, d8Menu, d12Menu, d20Menu
 var dices
 var cameraControls
 var clock = new THREE.Clock(true)
 var loader = new GLTFLoader()
-var d4Body
 var suelo
-var path = "../images/"
+
 
 initializeEnvironment()
 loadMenu()
@@ -46,27 +47,7 @@ function initializeEnvironment()
   ground.quaternion.setFromAxisAngle(new CANNON.Vec3(1,0,0),-Math.PI/2);
   world.addBody(ground);
 
-  suelo = new THREE.Mesh( new THREE.PlaneGeometry(10,10,1,1), new THREE.MeshNormalMaterial());
-	suelo.rotation.x = -Math.PI/2;
-	suelo.position.y = -0.25;
-	scene.add( suelo);
-
-  const paredes = [];
-  paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                map: new THREE.TextureLoader().load(path+"px.png")}) );
-  paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                map: new THREE.TextureLoader().load(path+"nx.png")}) );
-  paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                map: new THREE.TextureLoader().load(path+"py.png")}) );
-  paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                map: new THREE.TextureLoader().load(path+"ny.png")}) );
-  paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                map: new THREE.TextureLoader().load(path+"pz.png")}) );
-  paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                map: new THREE.TextureLoader().load(path+"nz.jpg")}) );
-  const habitacion = new THREE.Mesh( new THREE.BoxGeometry(60,60,60),paredes);
-  scene.add(habitacion);
-
+  initializeScene();
   initializeCameras();
   initializeLights()
 
@@ -79,6 +60,46 @@ function initializeEnvironment()
   d10Menu = new D10(scene);
   d12Menu = new D12(scene);
   d20Menu = new D20(scene);
+}
+
+function initializeScene() {
+  suelo = new THREE.Mesh(new THREE.PlaneGeometry(10, 10, 1, 1), new THREE.MeshNormalMaterial());
+  suelo.rotation.x = -Math.PI / 2;
+  suelo.position.y = -0.25;
+  scene.add(suelo);
+
+  createRoom();
+}
+
+function createRoom() {
+  const walls = [];
+  const size = 60;
+  walls.push(new THREE.MeshBasicMaterial({
+    side: THREE.BackSide,
+    map: new THREE.TextureLoader().load(pathImages + "px.png")
+  }));
+  walls.push(new THREE.MeshBasicMaterial({
+    side: THREE.BackSide,
+    map: new THREE.TextureLoader().load(pathImages + "nx.png")
+  }));
+  walls.push(new THREE.MeshBasicMaterial({
+    side: THREE.BackSide,
+    map: new THREE.TextureLoader().load(pathImages + "py.png")
+  }));
+  walls.push(new THREE.MeshBasicMaterial({
+    side: THREE.BackSide,
+    map: new THREE.TextureLoader().load(pathImages + "ny.png")
+  }));
+  walls.push(new THREE.MeshBasicMaterial({
+    side: THREE.BackSide,
+    map: new THREE.TextureLoader().load(pathImages + "pz.png")
+  }));
+  walls.push(new THREE.MeshBasicMaterial({
+    side: THREE.BackSide,
+    map: new THREE.TextureLoader().load(pathImages + "nz.jpg")
+  }));
+  const room = new THREE.Mesh(new THREE.BoxGeometry(size, size, size), walls);
+  scene.add(room);
 }
 
 function initializeCameras() {
@@ -133,16 +154,11 @@ function update()
 {
     world.fixedStep()
     cameraControls.update()
-
-    d4Menu.threeDice.position.copy(d4Body.position);
-    d4Menu.threeDice.quaternion.copy(d4Body.quaternion);
-
     let deltaTime = clock.getDelta()
     animateMenu(deltaTime);
 }
 
 function animateMenu(deltaTime) {
-
   d4Menu.standbyAnimation(deltaTime);
   d6Menu.standbyAnimation(deltaTime);
   d8Menu.standbyAnimation(deltaTime);
