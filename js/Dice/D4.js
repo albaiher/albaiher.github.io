@@ -16,7 +16,7 @@ export class D4 extends Dice {
 
     getDiceValue() {}
 
-    loadDice(){
+    loadDice(deployPosition){
         let vertices = [[-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1],
                 [-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1]];
         let faces = [[0, 3, 2, 1, 1], [1, 2, 6, 5, 2], [0, 1, 5, 4, 3],
@@ -25,6 +25,7 @@ export class D4 extends Dice {
 
         this.loader.load("../../models/dices/d4/d4.gltf", (gltf) => {
             this.threeDice = gltf.scene
+            this.threeDice.position = deployPosition;
             this.scene.add(this.threeDice)
         }, 
         undefined, 
