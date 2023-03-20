@@ -51,7 +51,6 @@ function initializeEnvironment()
 
 function loadMenu(){
   loadDiceMenu()
-  d6Menu.loadDice();
 }
 
 function loadDiceMenu(){
