@@ -98,8 +98,8 @@ function initializeScene() {
 
   loader.load("../models/dwarf/scene.gltf", (gltf) => {
     gltf.scene.position.x = 0
-    gltf.scene.position.z = -1.5
-    gltf.scene.position.y = 2.5
+    gltf.scene.position.z = -1.25
+    gltf.scene.position.y = 2.1
     gltf.scene.scale.x = 0.003
     gltf.scene.scale.z = 0.003
     gltf.scene.scale.y = 0.003
@@ -111,9 +111,9 @@ function initializeScene() {
   });
 
   loader.load("../models/twinkle/scene.gltf", (gltf) => {
-    gltf.scene.position.x = -1.5
+    gltf.scene.position.x = -1.25
     gltf.scene.position.z = 0
-    gltf.scene.position.y = 2.5
+    gltf.scene.position.y = 2.1
     gltf.scene.scale.x = 0.0015
     gltf.scene.scale.z = 0.0015
     gltf.scene.scale.y = 0.0015
@@ -125,12 +125,12 @@ function initializeScene() {
   });
 
   loader.load("../models/elven_archer/scene.gltf", (gltf) => {
-    gltf.scene.position.x = 0
-    gltf.scene.position.z = 1.5
-    gltf.scene.position.y = 2.5
-    gltf.scene.scale.x = 0.01
-    gltf.scene.scale.z = 0.01
-    gltf.scene.scale.y = 0.01
+    gltf.scene.position.x = -0.25
+    gltf.scene.position.z = 1.25
+    gltf.scene.position.y = 2.1
+    gltf.scene.scale.x = 0.0075
+    gltf.scene.scale.z = 0.0075
+    gltf.scene.scale.y = 0.0075
     scene.add(gltf.scene)
   }, 
   undefined, 
@@ -186,12 +186,11 @@ function initializeLights() {
   const ambiental = new THREE.AmbientLight(0xFFFFFF)
   scene.add(ambiental)
 
-  /*
+  
   const direccional = new THREE.DirectionalLight(0xFFFFFF, 1)
-  direccional.position.set(-1,-1,0)
+  direccional.position.set(5,10,0)
   direccional.castShadow = true
   scene.add(direccional);
-  */
 }
 function loadMenu(){
   loadDiceMenu()
