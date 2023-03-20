@@ -68,15 +68,13 @@ function initializeScene() {
   suelo.position.y = -0.25;
   scene.add(suelo);
 
-  const size = 0.0015
-
   loader.load("../models/wooden_table/scene.gltf", (gltf) => {
     gltf.scene.position.x = 0
     gltf.scene.position.z = 0
     gltf.scene.position.y = 0
-    gltf.scene.scale.x = 2
-    gltf.scene.scale.z = 2
-    gltf.scene.scale.y = 2
+    gltf.scene.scale.x = 3
+    gltf.scene.scale.z = 3
+    gltf.scene.scale.y = 3
     scene.add(gltf.scene)
   }, 
   undefined, 
@@ -87,7 +85,7 @@ function initializeScene() {
   loader.load("../models/table_top/scene.gltf", (gltf) => {
     gltf.scene.position.x = 0
     gltf.scene.position.z = 0
-    gltf.scene.position.y = 0
+    gltf.scene.position.y = 2
     gltf.scene.scale.x = 2
     gltf.scene.scale.z = 2
     gltf.scene.scale.y = 2
@@ -99,12 +97,12 @@ function initializeScene() {
   });
 
   loader.load("../models/dwarf/scene.gltf", (gltf) => {
-    gltf.scene.position.x = 1
-    gltf.scene.position.z = 0
-    gltf.scene.position.y = 1
-    gltf.scene.scale.x = 0.0015
-    gltf.scene.scale.z = 0.0015
-    gltf.scene.scale.y = 0.0015
+    gltf.scene.position.x = 0
+    gltf.scene.position.z = -1
+    gltf.scene.position.y = 2
+    gltf.scene.scale.x = 0.003
+    gltf.scene.scale.z = 0.003
+    gltf.scene.scale.y = 0.003
     scene.add(gltf.scene)
   }, 
   undefined, 
@@ -113,9 +111,9 @@ function initializeScene() {
   });
 
   loader.load("../models/twinkle/scene.gltf", (gltf) => {
-    gltf.scene.position.x = 2
+    gltf.scene.position.x = -1
     gltf.scene.position.z = 0
-    gltf.scene.position.y = 1
+    gltf.scene.position.y = 2
     gltf.scene.scale.x = 0.0015
     gltf.scene.scale.z = 0.0015
     gltf.scene.scale.y = 0.0015
@@ -127,12 +125,12 @@ function initializeScene() {
   });
 
   loader.load("../models/elven_archer/scene.gltf", (gltf) => {
-    gltf.scene.position.x = 3
-    gltf.scene.position.z = 0
-    gltf.scene.position.y = 1
-    gltf.scene.scale.x = 0.0015
-    gltf.scene.scale.z = 0.0015
-    gltf.scene.scale.y = 0.0015
+    gltf.scene.position.x = 0
+    gltf.scene.position.z = 1
+    gltf.scene.position.y = 2
+    gltf.scene.scale.x = 0.003
+    gltf.scene.scale.z = 0.003
+    gltf.scene.scale.y = 0.003
     scene.add(gltf.scene)
   }, 
   undefined, 
