@@ -56,12 +56,19 @@ function loadMenu(){
 
 function loadDiceMenu(){
   let position = new THREE.Vector3(0, 0 ,0)
+  let increment = new THREE.Vector3(2, 0 ,0)
+
   d4Menu.loadDice(position)
-  d6Menu.loadDice(position.add(new THREE.Vector3(2, 0 ,0)))
-  d8Menu.loadDice(position.add(new THREE.Vector3(2, 0 ,0)));
-  d10Menu.loadDice(position.add(new THREE.Vector3(2, 0 ,0)));
-  d12Menu.loadDice(position.add(new THREE.Vector3(2, 0 ,0)));
-  d20Menu.loadDice(position.add(new THREE.Vector3(2, 0 ,0)));
+  position.add(increment)
+  d6Menu.loadDice(position)
+  position.add(increment)
+  d8Menu.loadDice(position)
+  position.add(increment)
+  d10Menu.loadDice(position)
+  position.add(increment)
+  d12Menu.loadDice(position)
+  position.add(increment)
+  d20Menu.loadDice(position)
 }
 
 function updateAspectRatio()
