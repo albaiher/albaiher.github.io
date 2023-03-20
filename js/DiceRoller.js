@@ -120,8 +120,8 @@ function update()
     world.fixedStep()
     cameraControls.update()
 
-    d4Menu.position.copy(d4Body.position);
-    d4Menu.quaternion.copy(d4Body.quaternion);
+    d4Menu.threeDice.position.copy(d4Body.position);
+    d4Menu.threeDice.quaternion.copy(d4Body.quaternion);
 
     let deltaTime = clock.getDelta()
     animateMenu(deltaTime);
