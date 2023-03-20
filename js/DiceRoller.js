@@ -118,7 +118,6 @@ function updateAspectRatio()
 function update()
 {
     world.fixedStep()
-    cannonDebugger.update()
     cameraControls.update()
 
     d4Menu.position.copy(d4Body.position);
