@@ -7,7 +7,7 @@ export class D10 extends Dice {
     constructor(scene){
         super()
         this.valueRange = [1, 10]
-        this.mass = 350
+        this.mass = 2
         this.inertia = 9
         this.scale = 50
         this.scene = scene
