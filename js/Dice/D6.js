@@ -6,7 +6,6 @@ export class D6 extends Dice {
     
     constructor(scene){
         super()
-        this.threeDice = new THREE.Object3D()
         this.valueRange = [1, 6]
         this.mass = 300
         this.inertia = 13

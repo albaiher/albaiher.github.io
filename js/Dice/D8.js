@@ -6,10 +6,9 @@ export class D8 extends Dice {
     
     constructor(scene){
         super()
-        this.threeDice = new THREE.Object3D()
-        this.valueRange = [1, 6]
-        this.mass = 300
-        this.inertia = 13
+        this.valueRange = [1, 8]
+        this.mass = 340
+        this.inertia = 10
         this.scale = 50
         this.scene = scene
         this.cannonDice
@@ -20,10 +19,9 @@ export class D8 extends Dice {
     loadDice(deployPosition){
         let position = new THREE.Vector3()
         position.add(deployPosition)
-        let vertices = [[-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1],
-                [-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1]];
-        let faces = [[0, 3, 2, 1, 1], [1, 2, 6, 5, 2], [0, 1, 5, 4, 3],
-                [3, 7, 6, 2, 4], [0, 4, 7, 3, 5], [4, 5, 6, 7, 6]];
+        let vertices = [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]];
+        let faces = [[0, 2, 4, 1], [0, 4, 3, 2], [0, 3, 5, 3], [0, 5, 2, 4], [1, 3, 4, 5],
+                [1, 4, 2, 6], [1, 2, 5, 7], [1, 5, 3, 8]];
         let radius = this.scale * 0.9
 
         this.loader.load("../../models/dices/d8/d8.gltf", (gltf) => {

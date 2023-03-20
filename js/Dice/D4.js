@@ -6,9 +6,9 @@ export class D4 extends Dice {
     
     constructor(scene){
         super()
-        this.valueRange = [1, 6]
+        this.valueRange = [1, 4]
         this.mass = 300
-        this.inertia = 13
+        this.inertia = 5
         this.scale = 50
         this.scene = scene
         this.cannonDice
@@ -19,11 +19,9 @@ export class D4 extends Dice {
     loadDice(deployPosition){
         let position = new THREE.Vector3()
         position.add(deployPosition)
-        let vertices = [[-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1],
-                [-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1]];
-        let faces = [[0, 3, 2, 1, 1], [1, 2, 6, 5, 2], [0, 1, 5, 4, 3],
-                [3, 7, 6, 2, 4], [0, 4, 7, 3, 5], [4, 5, 6, 7, 6]];
-        let radius = this.scale * 0.9
+        let vertices = [[1, 1, 1], [-1, -1, 1], [-1, 1, -1], [1, -1, -1]];
+        let faces = [[1, 0, 2, 1], [0, 1, 3, 2], [0, 3, 2, 3], [1, 2, 3, 4]];
+        let radius = this.scale * 1.2
 
         this.loader.load("../../models/dices/d4/d4a.gltf", (gltf) => {
             gltf.scene.position.x = position.x
