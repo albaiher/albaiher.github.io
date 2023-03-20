@@ -17,7 +17,7 @@ var angulo = -0.1
 var clock = new THREE.Clock(true)
 var loader = new GLTFLoader()
 
-let cannonDebugger
+var cannonDebugger
 
 initializeEnvironment()
 loadMenu()
@@ -44,10 +44,6 @@ function initializeEnvironment()
 
   groundBody.quaternion.setFromEuler(-Math.PI / 2, 0, 0);
   world.addBody(groundBody);
-
-  cannonDebugger = new CannonDebugger(scene, world, {
-    color: 0xff0000,
-  });
 
   initializeCameras();
   initializeLights()
