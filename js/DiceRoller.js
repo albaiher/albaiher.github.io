@@ -96,7 +96,7 @@ function createRoom() {
   }));
   walls.push(new THREE.MeshBasicMaterial({
     side: THREE.BackSide,
-    map: new THREE.TextureLoader().load(pathImages + "nz.jpg")
+    map: new THREE.TextureLoader().load(pathImages + "nz.png")
   }));
   const room = new THREE.Mesh(new THREE.BoxGeometry(size, size, size), walls);
   scene.add(room);
