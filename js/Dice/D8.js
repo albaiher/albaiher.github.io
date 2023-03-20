@@ -25,8 +25,8 @@ export class D8 extends Dice {
         let radius = this.scale * 0.9
 
         this.loader.load("../../models/dices/d8/d8.gltf", (gltf) => {
+            gltf.scene.position = deployPosition
             this.threeDice = gltf.scene
-            this.threeDice.position = deployPosition;
             this.scene.add(this.threeDice)
         }, 
         undefined, 
