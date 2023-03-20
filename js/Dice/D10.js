@@ -2,7 +2,7 @@ import * as THREE from "../../lib/three.module.js";
 import * as CANNON from "../../lib/cannon-es.module.js"
 import { Dice } from "./Dice.js";
 
-export class D6 extends Dice {
+export class D10 extends Dice {
     
     constructor(scene){
         super()
@@ -24,7 +24,7 @@ export class D6 extends Dice {
                 [3, 7, 6, 2, 4], [0, 4, 7, 3, 5], [4, 5, 6, 7, 6]];
         let radius = this.scale * 0.9
 
-        this.loader.load("../../models/dices/d6/d6.gltf", (gltf) => {
+        this.loader.load("../../models/dices/d10/d10.gltf", (gltf) => {
             this.threeDice = gltf.scene
             this.scene.add(this.threeDice)
         }, 

@@ -6,7 +6,7 @@ export class Dice {
     
     constructor(){
         this.loader = new GLTFLoader()
-        this.threeDice
+        this.threeDice = new THREE.Object3D()
         this.valueRange
         this.mass
         this.inertia
@@ -33,5 +33,7 @@ export class Dice {
 
     loadDice() {}
 
-    standbyAnimation() {}
+    standbyAnimation(deltaTime){
+        this.threeDice.rotation.y += 0.1 * deltaTime
+    }
 }

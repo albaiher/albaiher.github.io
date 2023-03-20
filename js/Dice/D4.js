@@ -2,11 +2,10 @@ import * as THREE from "../../lib/three.module.js";
 import * as CANNON from "../../lib/cannon-es.module.js"
 import { Dice } from "./Dice.js";
 
-export class D6 extends Dice {
+export class D4 extends Dice {
     
     constructor(scene){
         super()
-        this.threeDice = new THREE.Object3D()
         this.valueRange = [1, 6]
         this.mass = 300
         this.inertia = 13
@@ -24,7 +23,7 @@ export class D6 extends Dice {
                 [3, 7, 6, 2, 4], [0, 4, 7, 3, 5], [4, 5, 6, 7, 6]];
         let radius = this.scale * 0.9
 
-        this.loader.load("../../models/dices/d6/d6.gltf", (gltf) => {
+        this.loader.load("../../models/dices/d4/d4.gltf", (gltf) => {
             this.threeDice = gltf.scene
             this.scene.add(this.threeDice)
         }, 
@@ -34,4 +33,5 @@ export class D6 extends Dice {
         });
         this.cannonDice = this.createCannonShape(vertices, faces, radius)
     } 
+
 }
