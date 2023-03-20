@@ -18,6 +18,7 @@ export class D6 extends Dice {
     getDiceValue() {}
 
     loadDice(deployPosition){
+        console.log(deployPosition)
         let position = new THREE.Vector3()
         position.add(deployPosition)
         let vertices = [[-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1],

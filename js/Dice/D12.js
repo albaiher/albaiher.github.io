@@ -18,6 +18,8 @@ export class D12 extends Dice {
     getDiceValue() {}
 
     loadDice(deployPosition){
+        let position = new THREE.Vector3()
+        position.add(deployPosition)
         let vertices = [[-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1],
                 [-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1]];
         let faces = [[0, 3, 2, 1, 1], [1, 2, 6, 5, 2], [0, 1, 5, 4, 3],
