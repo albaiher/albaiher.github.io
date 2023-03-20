@@ -25,7 +25,7 @@ export class D4 extends Dice {
                 [3, 7, 6, 2, 4], [0, 4, 7, 3, 5], [4, 5, 6, 7, 6]];
         let radius = this.scale * 0.9
 
-        this.loader.load("../../models/dices/d4/d4.gltf", (gltf) => {
+        this.loader.load("../../models/dices/d4/d4a.gltf", (gltf) => {
             gltf.scene.position.x = position.x
             gltf.scene.position.y = position.y
             gltf.scene.position.z = position.z
