@@ -9,15 +9,13 @@ import { D10 } from "./Dice/D10.js";
 import { D12 } from "./Dice/D12.js";
 import { D20 } from "./Dice/D20.js";
 
-var renderer, scene, camera, world 
+var renderer, scene, camera, world
 var d4Menu, d6Menu, d10Menu, d8Menu, d12Menu, d20Menu
 var dices
 var cameraControls
-var angulo = -0.1
 var clock = new THREE.Clock(true)
 var loader = new GLTFLoader()
-
-var cannonDebugger
+var d4Body
 
 initializeEnvironment()
 loadMenu()
@@ -89,7 +87,7 @@ function loadDiceMenu(){
 
   d4Menu.loadDice(position)
 
-  var d4Body = new CANNON.Body({
+  d4Body = new CANNON.Body({
     mass: d4Menu.mass,
     shape: d4Menu.cannonDice,
   });
