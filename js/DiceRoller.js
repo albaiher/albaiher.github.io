@@ -21,7 +21,7 @@ var suelo
 
 
 initializeEnvironment()
-loadMenu()
+//loadMenu()
 render()
 
 function initializeEnvironment()
@@ -74,6 +74,9 @@ function initializeScene() {
     gltf.scene.position.x = 0
     gltf.scene.position.z = 0
     gltf.scene.position.y = 0
+    gltf.scene.scale.x = 2
+    gltf.scene.scale.z = 2
+    gltf.scene.scale.y = 2
     scene.add(gltf.scene)
   }, 
   undefined, 
@@ -84,7 +87,10 @@ function initializeScene() {
   loader.load("../models/table_top/scene.gltf", (gltf) => {
     gltf.scene.position.x = 0
     gltf.scene.position.z = 0
-    gltf.scene.position.y = 1
+    gltf.scene.position.y = 0
+    gltf.scene.scale.x = 2
+    gltf.scene.scale.z = 2
+    gltf.scene.scale.y = 2
     scene.add(gltf.scene)
   }, 
   undefined, 
@@ -179,13 +185,15 @@ function initializeCameras() {
 
 function initializeLights() {
 
-  const ambiental = new THREE.AmbientLight(0x222222)
+  const ambiental = new THREE.AmbientLight(0xFFFFFF)
   scene.add(ambiental)
 
-  const direccional = new THREE.DirectionalLight(0xFFFFFF,0.5)
+  /*
+  const direccional = new THREE.DirectionalLight(0xFFFFFF, 1)
   direccional.position.set(-1,-1,0)
   direccional.castShadow = true
   scene.add(direccional);
+  */
 }
 function loadMenu(){
   loadDiceMenu()
