@@ -99,10 +99,11 @@ function initializeScene() {
   loader.load("../models/dwarf/scene.gltf", (gltf) => {
     gltf.scene.position.x = -0.25
     gltf.scene.position.z = 1.25
-    gltf.scene.position.y = 2.15
+    gltf.scene.position.y = 2.19
     gltf.scene.scale.x = 0.003
     gltf.scene.scale.z = 0.003
     gltf.scene.scale.y = 0.003
+    gltf.scene.rotation.z = 180
     scene.add(gltf.scene)
   }, 
   undefined, 
@@ -113,7 +114,7 @@ function initializeScene() {
   loader.load("../models/twinkle/scene.gltf", (gltf) => {
     gltf.scene.position.x = 0
     gltf.scene.position.z = -1.25
-    gltf.scene.position.y = 2.15
+    gltf.scene.position.y = 2.19
     gltf.scene.scale.x = 0.0015
     gltf.scene.scale.z = 0.0015
     gltf.scene.scale.y = 0.0015
@@ -127,10 +128,11 @@ function initializeScene() {
   loader.load("../models/elven_archer/scene.gltf", (gltf) => {
     gltf.scene.position.x = -1.25
     gltf.scene.position.z = 0
-    gltf.scene.position.y = 2.15
+    gltf.scene.position.y = 2.19
     gltf.scene.scale.x = 0.0075
     gltf.scene.scale.z = 0.0075
     gltf.scene.scale.y = 0.0075
+    gltf.scene.rotation.z = 180
     scene.add(gltf.scene)
   }, 
   undefined, 
