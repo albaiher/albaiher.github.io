@@ -211,6 +211,7 @@
       "primitives": [
         {
           "attributes": {
+            "COLOR_0": 2,
             "NORMAL": 1,
             "POSITION": 0
           },
@@ -225,6 +226,7 @@
       "primitives": [
         {
           "attributes": {
+            "COLOR_0": 6,
             "NORMAL": 4,
             "POSITION": 3
           },
@@ -239,6 +241,7 @@
       "primitives": [
         {
           "attributes": {
+            "COLOR_0": 10,
             "NORMAL": 7,
             "POSITION": 6
           },
@@ -253,6 +256,7 @@
       "primitives": [
         {
           "attributes": {
+            "COLOR_0": 14,
             "NORMAL": 10,
             "POSITION": 9
           },
