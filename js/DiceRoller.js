@@ -26,7 +26,7 @@ render()
 
 function initializeEnvironment()
 {
-  renderer = new THREE.WebGLRenderer()
+  renderer = new THREE.WebGLRenderer({ antialias: true })
   renderer.setSize( window.innerWidth, window.innerHeight )
   renderer.setClearColor( new THREE.Color(0xFFFFFF) )
   document.getElementById('container').appendChild( renderer.domElement )
@@ -68,6 +68,8 @@ function initializeScene() {
   suelo.position.y = -0.25;
   scene.add(suelo);
 
+  let newMaterial = new THREE.MeshStandardMaterial({color: 0xff0000});
+
   loader.load("../models/wooden_table/scene.gltf", (gltf) => {
     gltf.scene.position.x = 0
     gltf.scene.position.z = 0
@@ -103,6 +105,10 @@ function initializeScene() {
     gltf.scene.scale.x = 0.003
     gltf.scene.scale.z = 0.003
     gltf.scene.scale.y = 0.003
+    let model = gltf.scene
+    model.traverse((o) => {
+      if (o.isMesh) o.material = newMaterial;
+    });
     scene.add(gltf.scene)
   }, 
   undefined, 
@@ -117,7 +123,11 @@ function initializeScene() {
     gltf.scene.scale.x = 0.0015
     gltf.scene.scale.z = 0.0015
     gltf.scene.scale.y = 0.0015
-    scene.add(gltf.scene)
+    let model = gltf.scene
+    model.traverse((o) => {
+      if (o.isMesh) o.material = newMaterial;
+    });
+    scene.add(model)
   }, 
   undefined, 
   function (error) {
