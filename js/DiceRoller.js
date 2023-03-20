@@ -30,13 +30,8 @@ function initializeEnvironment()
 
   scene = new THREE.Scene()
 
-  var aspectRatio = window.innerWidth / window.innerHeight
-  camera = new THREE.PerspectiveCamera( 50, aspectRatio , 0.1, 100 )
-  camera.position.set( 1, 1.5, 2 )
-  camera.lookAt(0,0,0)
-
-  cameraControls = new OrbitControls(camera, renderer.domElement)
-  cameraControls.target.set( 0, 0, 0 )
+  initializeCameras();
+  initializeLights()
 
   window.addEventListener('resize', updateAspectRatio )
   clock.start()
@@ -49,6 +44,37 @@ function initializeEnvironment()
   d20Menu = new D20(scene);
 }
 
+function initializeCameras() {
+  var aspectRatio = window.innerWidth / window.innerHeight;
+  camera = new THREE.PerspectiveCamera(50, aspectRatio, 0.1, 100);
+  camera.position.set(1, 1.5, 2);
+  camera.lookAt(0, 0, 0);
+
+  cameraControls = new OrbitControls(camera, renderer.domElement);
+  cameraControls.target.set(0, 0, 0);
+}
+
+function initializeLights() {
+  const ambiental = new THREE.AmbientLight(0x222222);
+  scene.add(ambiental);
+  const direccional = new THREE.DirectionalLight(0xFFFFFF,0.3);
+  direccional.position.set(-1,1,-1);
+  direccional.castShadow = true;
+  scene.add(direccional);
+  const puntual = new THREE.PointLight(0xFFFFFF,0.5);
+  puntual.position.set(2,7,-4);
+  scene.add(puntual);
+  const focal = new THREE.SpotLight(0xFFFFFF,0.3);
+  focal.position.set(-2,7,4);
+  focal.target.position.set(0,0,0);
+  focal.angle= Math.PI/7;
+  focal.penumbra = 0.3;
+  focal.castShadow= true;
+  focal.shadow.camera.far = 20;
+  focal.shadow.camera.fov = 80;
+  scene.add(focal);
+  scene.add(new THREE.CameraHelper(focal.shadow.camera));
+}
 function loadMenu(){
   loadDiceMenu()
 }
