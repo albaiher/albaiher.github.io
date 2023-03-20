@@ -68,6 +68,45 @@ function initializeScene() {
   suelo.position.y = -0.25;
   scene.add(suelo);
 
+  this.loader.load("../models/wooden_table/scene.gltf", (gltf) => {
+    this.scene.add(gltf.scene)
+  }, 
+  undefined, 
+  function (error) {
+      console.log(error)
+  });
+
+  this.loader.load("../models/table_top/scene.gltf", (gltf) => {
+    this.scene.add(gltf.scene)
+  }, 
+  undefined, 
+  function (error) {
+      console.log(error)
+  });
+
+  this.loader.load("../models/dwarf/scene.gltf", (gltf) => {
+    this.scene.add(gltf.scene)
+  }, 
+  undefined, 
+  function (error) {
+      console.log(error)
+  });
+
+  this.loader.load("../models/twinkle/scene.gltf", (gltf) => {
+    this.scene.add(gltf.scene)
+  }, 
+  undefined, 
+  function (error) {
+      console.log(error)
+  });
+
+  this.loader.load("../models/elven_archer/scene.gltf", (gltf) => {
+    this.scene.add(gltf.scene)
+  }, 
+  undefined, 
+  function (error) {
+      console.log(error)
+  });
   createRoom();
 }
 
