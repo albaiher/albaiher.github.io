@@ -1,0 +1,11 @@
+Model Information:
+* title:	Elven Archer
+* source:	https://sketchfab.com/3d-models/elven-archer-8cf2507731a04e1cb74c01a1b5e094d1
+* author:	Jakatoa (https://sketchfab.com/jakatoa)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Elven Archer" (https://sketchfab.com/3d-models/elven-archer-8cf2507731a04e1cb74c01a1b5e094d1) by Jakatoa (https://sketchfab.com/jakatoa) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
