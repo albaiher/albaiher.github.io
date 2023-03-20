@@ -41,6 +41,7 @@ function initializeEnvironment()
   });
 
   groundBody.quaternion.setFromEuler(-Math.PI / 2, 0, 0);
+  groundBody.position.set(0,-8,0)
   world.addBody(groundBody);
 
   initializeCameras();
