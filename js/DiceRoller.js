@@ -1,15 +1,15 @@
 import * as THREE from "../lib/three.module.js";
 import { GLTFLoader } from "../lib/GLTFLoader.module.js";
 import { OrbitControls } from "../lib/OrbitControls.module.js";
+import * as CANNON from "../lib/cannon-es.module.js"
 import { D6 } from "./Dice/D6.js";
 import { D4 } from "./Dice/D4.js";
 import { D8 } from "./Dice/D8.js";
 import { D10 } from "./Dice/D10.js";
 import { D12 } from "./Dice/D12.js";
 import { D20 } from "./Dice/D20.js";
-import { Vec3 } from "../lib/cannon-es.module.js";
 
-var renderer, scene, camera
+var renderer, scene, camera, world 
 var d4Menu, d6Menu, d10Menu, d8Menu, d12Menu, d20Menu
 var dices
 var cameraControls
@@ -29,6 +29,20 @@ function initializeEnvironment()
   document.getElementById('container').appendChild( renderer.domElement )
 
   scene = new THREE.Scene()
+
+  world = new CANNON.World()
+  world.gravity.set(0, -9.8 , 0);
+  world.broadphase = new CANNON.NaiveBroadphase();
+  world.solver.iterations = 16;
+
+  const groundBody = new CANNON.Body({
+    type: CANNON.Body.STATIC,
+    // infinte geometric plane
+    shape: new CANNON.Plane(),
+  });
+
+  groundBody.quaternion.setFromEuler(-Math.PI / 2, 0, 0);
+  world.addBody(groundBody);
 
   initializeCameras();
   initializeLights()
@@ -55,25 +69,14 @@ function initializeCameras() {
 }
 
 function initializeLights() {
-  const ambiental = new THREE.AmbientLight(0x222222);
-  scene.add(ambiental);
-  const direccional = new THREE.DirectionalLight(0xFFFFFF,0.3);
-  direccional.position.set(-1,1,-1);
-  direccional.castShadow = true;
+
+  const ambiental = new THREE.AmbientLight(0x222222)
+  scene.add(ambiental)
+
+  const direccional = new THREE.DirectionalLight(0xFFFFFF,0.5)
+  direccional.position.set(-1,-1,0)
+  direccional.castShadow = true
   scene.add(direccional);
-  const puntual = new THREE.PointLight(0xFFFFFF,0.5);
-  puntual.position.set(2,7,-4);
-  scene.add(puntual);
-  const focal = new THREE.SpotLight(0xFFFFFF,0.3);
-  focal.position.set(-2,7,4);
-  focal.target.position.set(0,0,0);
-  focal.angle= Math.PI/7;
-  focal.penumbra = 0.3;
-  focal.castShadow= true;
-  focal.shadow.camera.far = 20;
-  focal.shadow.camera.fov = 80;
-  scene.add(focal);
-  scene.add(new THREE.CameraHelper(focal.shadow.camera));
 }
 function loadMenu(){
   loadDiceMenu()
