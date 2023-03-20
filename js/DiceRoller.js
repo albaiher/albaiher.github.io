@@ -17,6 +17,8 @@ var angulo = -0.1
 var clock = new THREE.Clock(true)
 var loader = new GLTFLoader()
 
+let cannonDebugger
+
 initializeEnvironment()
 loadMenu()
 render()
@@ -37,12 +39,15 @@ function initializeEnvironment()
 
   const groundBody = new CANNON.Body({
     type: CANNON.Body.STATIC,
-    // infinte geometric plane
     shape: new CANNON.Plane(),
   });
 
   groundBody.quaternion.setFromEuler(-Math.PI / 2, 0, 0);
   world.addBody(groundBody);
+
+  cannonDebugger = new CannonDebugger(scene, world, {
+    color: 0xff0000,
+  });
 
   initializeCameras();
   initializeLights()
@@ -87,6 +92,14 @@ function loadDiceMenu(){
   let increment = new THREE.Vector3(2, 0 ,0)
 
   d4Menu.loadDice(position)
+
+  body = new CANNON.Body({
+    mass: d4Menu.mass,
+    shape: d4Menu.cannonDice,
+  });
+
+  world.add(dice.body);
+
   position.add(increment)
   d6Menu.loadDice(position)
   position.add(increment)
@@ -108,8 +121,12 @@ function updateAspectRatio()
 
 function update()
 {
-    // Cambios para actualizar la camara segun mvto del raton
+    world.fixedStep()
+    cannonDebugger.update()
     cameraControls.update()
+
+    d4Menu.position.copy(d4Body.position);
+    d4Menu.quaternion.copy(d4Body.quaternion);
 
     let deltaTime = clock.getDelta()
     animateMenu(deltaTime);
