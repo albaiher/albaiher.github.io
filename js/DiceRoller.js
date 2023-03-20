@@ -35,14 +35,19 @@ function initializeEnvironment()
   world.broadphase = new CANNON.NaiveBroadphase();
   world.solver.iterations = 16;
 
-  const groundBody = new CANNON.Body({
+  const ground = new CANNON.Body({
     type: CANNON.Body.STATIC,
     shape: new CANNON.Plane(),
   });
 
-  groundBody.quaternion.setFromEuler(-Math.PI / 2, 0, 0);
-  groundBody.position.set(0,-8,0)
-  world.addBody(groundBody);
+	ground.position.y = -0.25;
+  ground.quaternion.setFromAxisAngle(new CANNON.Vec3(1,0,0),-Math.PI/2);
+  world.addBody(ground);
+
+  const suelo = new THREE.Mesh( new THREE.PlaneGeometry(10,10,1,1), new THREE.MeshNormalMaterial());
+	suelo.rotation.x = -Math.PI/2;
+	suelo.position.y = -0.25;
+	scene.add( suelo);
 
   initializeCameras();
   initializeLights()
