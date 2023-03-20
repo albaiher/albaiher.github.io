@@ -93,8 +93,8 @@ function loadDiceMenu(){
     mass: d4Menu.mass,
     shape: d4Menu.cannonDice,
   });
-
-  world.add(d4Body);
+  
+  world.addBody(d4Body);
 
   position.add(increment)
   d6Menu.loadDice(position)
