@@ -33,7 +33,7 @@ export class Dice {
 
     createCannonBody(vertices, faces, radius, material, position){
         const shape = this.createCannonShape(vertices, faces, radius);
-        this.cannonBody = new CANNON.Body( {mass: masa, material: material} );
+        this.cannonBody = new CANNON.Body( {mass: this.mass, material: material} );
         this.cannonBody.addShape( shape );
         this.cannonBody.position.copy( position );
         this.threeDice.position.copy( this.cannonBody.position );
