@@ -14,7 +14,7 @@ const pathImages = "../images/"
 var renderer, scene, camera, world
 var d4Menu, d6Menu, d10Menu, d8Menu, d12Menu, d20Menu
 var dice
-var cameraControls
+var cameraController, effectController
 var clock = new THREE.Clock(true)
 var loader = new GLTFLoader()
 
@@ -25,6 +25,7 @@ const diceMaterial = new CANNON.Material("diceMaterial");
 
 initializeEnvironment()
 loadMenu()
+setupGUI()
 render()
 
 function esfera( radio, posicion, material ){
@@ -221,8 +222,8 @@ function initializeCameras() {
   camera.position.set(1, 3, 2);
   camera.lookAt(0, 2.1, 0);
 
-  cameraControls = new OrbitControls(camera, renderer.domElement);
-  cameraControls.target.set(0, 2.1, 0);
+  cameraController = new OrbitControls(camera, renderer.domElement);
+  cameraController.target.set(0, 2.1, 0);
 }
 
 function initializeLights() {
@@ -235,6 +236,39 @@ function initializeLights() {
   direccional.position.set(5,10,0)
   direccional.castShadow = true
   scene.add(direccional);
+}
+
+
+function setupGUI()
+{
+	// Definicion de los controles
+	effectController = {
+		titulo: 'Tirador de dados',
+		d4: 0,
+    d6: 0,
+    d8: 0,
+    d10: 0,
+    d12: 0,
+    d20: 0,
+		roll: function(){},
+		clear: function(){}
+	};
+
+	// Creacion interfaz
+	const gui = new GUI();
+
+	// Construccion del menu
+	const h = gui.addFolder("Dados a tirar");
+	h.add(effectController, "titulo").name("Aplicacion");
+	h.add(effectController, "d4", 0, 10, 1).name("d4");
+  h.add(effectController, "d6", 0, 10, 1).name("d6");
+  h.add(effectController, "d8", 0, 10, 1).name("d8");
+  h.add(effectController, "d10", 0, 10, 1).name("d10");
+  h.add(effectController, "d12", 0, 10, 1).name("d12");
+  h.add(effectController, "d20", 0, 10, 1).name("d20");
+  h.add(effectController, "roll")
+  h.add(effectController, "clear")
+
 }
 
 function loadMenu(){
@@ -269,10 +303,8 @@ function updateAspectRatio()
 function update()
 {
     world.fixedStep()
-    cameraControls.update()
+    cameraController.update()
     let deltaTime = clock.getDelta()
-    dice.visual.position.copy( dice.body.position );
-		dice.visual.quaternion.copy( dice.body.quaternion );
     //animateMenu(deltaTime);
 }
 
