@@ -368,7 +368,7 @@ function update()
     if(throwing){
       for(let dice of dicesToRoll){
         dice.threeDice.position.copy(dice.cannonBody.position)
-        dice.threeDice.rotation.copy(dice.cannonBody.rotation)
+        dice.threeDice.quaternion.copy(dice.cannonBody.quaternion)
       }
     }
     //animateMenu(deltaTime);
