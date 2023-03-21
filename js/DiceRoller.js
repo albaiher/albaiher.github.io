@@ -30,16 +30,6 @@ loadDices()
 setupGUI()
 render()
 
-function esfera( radio, posicion, material ){
-	var masa = 1;
-	this.body = new CANNON.Body( {mass: masa, material: material} );
-	this.body.addShape( new CANNON.Sphere( radio ) );
-	this.body.position.copy( posicion );
-	this.visual = new THREE.Mesh( new THREE.SphereGeometry( radio ), 
-		          new THREE.MeshBasicMaterial( {wireframe: true } ) );
-	this.visual.position.copy( this.body.position );
-}
-
 function initializeEnvironment()
 {
   renderer = new THREE.WebGLRenderer({ antialias: true })
@@ -275,7 +265,24 @@ function setupGUI()
 }
 
 function rollDices(){
-  //prepareDicesToRoll()
+  prepareDicesToRoll()
+  let position = new THREE.Vector3(0, 3 , 0)
+  d4s.push(d4Base.clone(position, diceMaterial))
+}
+
+function prepareDicesToRoll(){
+  extractDicesFor(effectController.d4,  d4s)
+  extractDicesFor(effectController.d6,  d6s)
+  extractDicesFor(effectController.d8,  d8s)
+  extractDicesFor(effectController.d10, d10s)
+  extractDicesFor(effectController.d12, d12s)
+  extractDicesFor(effectController.d20, d20s)
+}
+
+function extractDicesFor(type, pull) {
+  for (let i = 0; i < type; i++) {
+    dicesToRoll.push(pull[i]);
+  }
 }
 
 function clearTable(){
@@ -285,7 +292,7 @@ function clearTable(){
 
 function loadDices(){
   loadBaseDices()
-  cloneDices()
+  setTimeout(cloneDices(), 5000)
 }
 
 function loadBaseDices(){
