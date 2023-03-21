@@ -1,6 +1,7 @@
 import * as THREE from "../../lib/three.module.js";
 import * as CANNON from "../../lib/cannon-es.module.js"
 import { Dice } from "./Dice.js";
+import * as SkeletonUtils from "../../lib/SkeletonUtils.js";
 
 let vertices = [[1, 1, 1], [-1, -1, 1], [-1, 1, -1], [1, -1, -1]];
 let faces = [[1, 0, 2, 1], [0, 1, 3, 2], [0, 3, 2, 3], [1, 2, 3, 4]];
@@ -16,7 +17,7 @@ export class D4 extends Dice {
 
     clone(deployPosition,material){
         let clone = new D4(this.scene)
-        clone.threeDice = this.threeDice.clone()
+        clone.threeDice = SkeletonUtils.clone(this.threeDice)
         clone.threeDice.position.copy(deployPosition)
         let radius = this.scale * 1.2
         clone.createCannonBody(vertices, faces, radius, material, deployPosition)

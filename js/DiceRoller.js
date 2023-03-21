@@ -289,7 +289,7 @@ function loadDices(){
 }
 
 function loadBaseDices(){
-  let position = new THREE.Vector3(1.2, 2.22, 1.25)
+  let position = new THREE.Vector3(1, 2.16, 1.25)
   let increment = new THREE.Vector3(0.075, 0 ,0)
 
   d4Base.loadDice(position, diceMaterial)
@@ -309,12 +309,12 @@ function cloneDices(){
   let position = new THREE.Vector3(0.9, 1.90 , 1.25)
 
   for(let i = 0; i < 10; i++){
-    d4s.push(d4Base.clone(position, diceMaterial))
-    d6s.push(d6Base.clone(position, diceMaterial))
-    d8s.push(d8Base.clone(position, diceMaterial))
-    d10s.push(d10Base.clone(position, diceMaterial))
-    d12s.push(d12Base.clone(position, diceMaterial))
-    d20s.push(d20Base.clone(position, diceMaterial))
+    d4s.push(d4Base.clone(scene, position, diceMaterial))
+    d6s.push(d6Base.clone(scene, position, diceMaterial))
+    d8s.push(d8Base.clone(scene, position, diceMaterial))
+    d10s.push(d10Base.clone(scene, position, diceMaterial))
+    d12s.push(d12Base.clone(scene, position, diceMaterial))
+    d20s.push(d20Base.clone(scene, position, diceMaterial))
   }
 
   console.log(d4s)
