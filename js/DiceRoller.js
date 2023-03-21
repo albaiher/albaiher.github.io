@@ -19,6 +19,7 @@ var dicesToRoll = []
 var cameraController, effectController
 var clock = new THREE.Clock(true)
 var loader = new GLTFLoader()
+var throwing = false
 
 const groundMaterial = new CANNON.Material("groundMaterial");
 const diceMaterial = new CANNON.Material("diceMaterial");
@@ -265,6 +266,7 @@ function setupGUI()
 }
 
 function rollDices(){
+  clearTable()
   prepareDicesToRoll()
   addDicesToWorld()
 }
@@ -279,6 +281,7 @@ function addDicesToWorld(){
   for(let dice of dicesToRoll){
     world.addBody(dice.cannonBody) 
   }
+  throwing = true
 }
 function extractDices() {
   extractDicesFor(effectController.d4, d4s);
@@ -296,8 +299,24 @@ function extractDicesFor(type, pull) {
 }
 
 function clearTable(){
-  //removeDicesFromWorld()
-  //moveDicesToOriginalPlace()
+  throwing = false
+  removeDicesFromWorld()
+  moveDicesToOriginalPlace()
+  dicesToRoll = []
+}
+
+function removeDicesFromWorld(){
+  for(let dice of dicesToRoll){
+    world.removeBody(dice.cannonBody)
+  }
+}
+
+function moveDicesToOriginalPlace(){
+  let position = new THREE.Vector3(0, 1.8 , 0)
+  for(let dice of dicesToRoll){
+    dice.threeDice.position.copy(position)
+    dice.cannonBody.position.copy(position)
+  }
 }
 
 function loadBaseDices(){
@@ -327,7 +346,7 @@ function cloneDices(){
 }
 
 function cloneDicesFor(type, pull, base) {
-  let position = new THREE.Vector3(0, 3 , 0)
+  let position = new THREE.Vector3(0, 1.8 , 0)
   for (let i = pull.length; i < type; i++) {
     pull.push(base.clone(position, diceMaterial))
   }
@@ -345,6 +364,13 @@ function update()
     world.fixedStep()
     cameraController.update()
     let deltaTime = clock.getDelta()
+
+    if(throwing){
+      for(let dice of dicesToRoll){
+        dice.threeDice.position.copy(dice.cannonBody.position)
+        dice.threeDice.rotation.copy(dice.cannonBody.rotation)
+      }
+    }
     //animateMenu(deltaTime);
 }
 
