@@ -13,7 +13,7 @@ const pathImages = "../images/"
 
 var renderer, scene, camera, world
 var d4Menu, d6Menu, d10Menu, d8Menu, d12Menu, d20Menu
-var dices
+var dice
 var cameraControls
 var clock = new THREE.Clock(true)
 var loader = new GLTFLoader()
@@ -104,9 +104,9 @@ function initializeWorld() {
   world.addBody( rightWall );
 
 
-  const e = new esfera( 1/2, new CANNON.Vec3( 0, 1, 0 ), diceMaterial );
-  world.addBody( e.body );
-  scene.add( e.visual );
+  dice = new esfera( 1/4, new CANNON.Vec3( 0, 4, 0 ), diceMaterial );
+  world.addBody( dice.body );
+  scene.add( dice.visual );
 
 }
 
@@ -275,7 +275,9 @@ function update()
     world.fixedStep()
     cameraControls.update()
     let deltaTime = clock.getDelta()
-    animateMenu(deltaTime);
+    dice.visual.position.copy( dice.body.position );
+		dice.visual.quaternion.copy( dice.body.quaternion );
+    //animateMenu(deltaTime);
 }
 
 function animateMenu(deltaTime) {
