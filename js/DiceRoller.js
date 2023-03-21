@@ -192,7 +192,7 @@ function createTable() {
 
 function createRoom() {
   const walls = [];
-  const size = 60;
+  const size = 40;
   walls.push(new THREE.MeshBasicMaterial({
     side: THREE.BackSide,
     map: new THREE.TextureLoader().load(pathImages + "px.png")
@@ -224,11 +224,11 @@ function createRoom() {
 function initializeCameras() {
   var aspectRatio = window.innerWidth / window.innerHeight;
   camera = new THREE.PerspectiveCamera(50, aspectRatio, 0.1, 100);
-  camera.position.set(1, 1.5, 2);
-  camera.lookAt(0, 0, 0);
+  camera.position.set(1, 3, 2);
+  camera.lookAt(0, 2.1, 0);
 
   cameraControls = new OrbitControls(camera, renderer.domElement);
-  cameraControls.target.set(0, 0, 0);
+  cameraControls.target.set(0, 2.1, 0);
 }
 
 function initializeLights() {
