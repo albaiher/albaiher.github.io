@@ -30,7 +30,7 @@ export class D10 extends Dice {
                 [5, 6, 7, v], [7, 6, 8, v], [7, 8, 9, v], [9, 8, 0, v], [9, 0, 1, v]];
 
         let radius = this.scale * 0.9
-        let scaleVector = new THREE.Vector3(0.1,0.1,0.1)
+        let scaleVector = new THREE.Vector3(0.075,0.075,0.075)
 
 
         this.loader.load("../../models/dices/d10/d10.gltf", (gltf) => {

@@ -27,7 +27,7 @@ export class D20 extends Dice {
                 [3, 9, 4, 11], [3, 4, 2, 12], [3, 2, 6, 13], [3, 6, 8, 14], [3, 8, 9, 15],
                 [4, 9, 5, 16], [2, 4, 11, 17], [6, 2, 10, 18], [8, 6, 7, 19], [9, 8, 1, 20]];
         let radius = this.scale
-        let scaleVector = new THREE.Vector3(0.1,0.1,0.1)
+        let scaleVector = new THREE.Vector3(0.075,0.075,0.075)
 
 
         this.loader.load("../../models/dices/d20/d20.gltf", (gltf) => {

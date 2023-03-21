@@ -21,7 +21,7 @@ export class D8 extends Dice {
         let faces = [[0, 2, 4, 1], [0, 4, 3, 2], [0, 3, 5, 3], [0, 5, 2, 4], [1, 3, 4, 5],
                 [1, 4, 2, 6], [1, 2, 5, 7], [1, 5, 3, 8]];
         let radius = this.scale * 0.9
-        let scaleVector = new THREE.Vector3(0.1,0.1,0.1)
+        let scaleVector = new THREE.Vector3(0.075,0.075,0.075)
 
         this.loader.load("../../models/dices/d8/d8.gltf", (gltf) => {
             gltf.scene.position.x = position.x

@@ -20,7 +20,7 @@ export class D4 extends Dice {
         let vertices = [[1, 1, 1], [-1, -1, 1], [-1, 1, -1], [1, -1, -1]];
         let faces = [[1, 0, 2, 1], [0, 1, 3, 2], [0, 3, 2, 3], [1, 2, 3, 4]];
         let radius = this.scale * 1.2
-        let scaleVector = new THREE.Vector3(0.1,0.1,0.1)
+        let scaleVector = new THREE.Vector3(0.075,0.075,0.075)
         this.loader.load("../../models/dices/d4/d4a.gltf", (gltf) => {
             gltf.scene.position.x = position.x
             gltf.scene.position.y = position.y

@@ -23,8 +23,8 @@ export class D6 extends Dice {
         let faces = [[0, 3, 2, 1, 1], [1, 2, 6, 5, 2], [0, 1, 5, 4, 3],
                 [3, 7, 6, 2, 4], [0, 4, 7, 3, 5], [4, 5, 6, 7, 6]];
         let radius = this.scale * 0.9
-        let scaleVector = new THREE.Vector3(0.1,0.1,0.1)
-        
+        let scaleVector = new THREE.Vector3(0.075,0.075,0.075)
+
         this.loader.load("../../models/dices/d6/d6.gltf", (gltf) => {
             gltf.scene.position.x = position.x
             gltf.scene.position.y = position.y
