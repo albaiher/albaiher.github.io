@@ -281,6 +281,7 @@ function setDicesPosition(){
   let position = new THREE.Vector3(0,3,0)
   for(let dice of dicesToRoll){
     dice.threeDice.position.copy(position)
+    dice.threeDice.quaternion.copy(dice.cannonBody.quaternion)
     dice.cannonBody.position.copy(position)
   }
 }
