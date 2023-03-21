@@ -2,6 +2,7 @@ import * as THREE from "../lib/three.module.js";
 import { GLTFLoader } from "../lib/GLTFLoader.module.js";
 import { OrbitControls } from "../lib/OrbitControls.module.js";
 import * as CANNON from "../lib/cannon-es.module.js"
+import { GUI } from "../lib/lil-gui.module.min.js";
 import { D6 } from "./Dice/D6.js";
 import { D4 } from "./Dice/D4.js";
 import { D8 } from "./Dice/D8.js";
@@ -266,8 +267,8 @@ function setupGUI()
   h.add(effectController, "d10", 0, 10, 1).name("d10");
   h.add(effectController, "d12", 0, 10, 1).name("d12");
   h.add(effectController, "d20", 0, 10, 1).name("d20");
-  h.add(effectController, "roll")
-  h.add(effectController, "clear")
+  h.add(effectController, "roll").name("Roll dices")
+  h.add(effectController, "clear").name("Clear table")
 
 }
 
