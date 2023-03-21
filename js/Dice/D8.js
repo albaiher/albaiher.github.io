@@ -22,7 +22,8 @@ export class D8 extends Dice {
         clone.threeDice = SkeletonUtils.clone(this.threeDice)
         clone.threeDice.position.copy(deployPosition)
         const radius = this.scale * 0.9
-        clone.createCannonBody(vertices, faces, radius, material, deployPosition)
+        let size = 0.035
+        clone.createCannonBody(vertices, faces, size, material, deployPosition)
         this.scene.add(clone.threeDice)
         return clone
     }
