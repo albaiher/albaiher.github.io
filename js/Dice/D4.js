@@ -16,7 +16,7 @@ export class D4 extends Dice {
 
     clone(deployPosition,material){
         let clone = new D4(this.scene)
-        clone.threeDice = this.threeDice.scene.clone()
+        clone.threeDice = this.threeDice.clone()
 
         let radius = this.scale * 1.2
         clone.createCannonBody(vertices, faces, radius, material, deployPosition)

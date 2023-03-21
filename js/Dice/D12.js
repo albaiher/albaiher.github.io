@@ -23,7 +23,7 @@ export class D12 extends Dice {
 
     clone(deployPosition,material){
         let clone = new D12(this.scene)
-        clone.threeDice = this.threeDice.scene.clone()
+        clone.threeDice = this.threeDice.clone()
         const radius = this.scale * 0.9
         clone.createCannonBody(vertices, faces, radius, material, deployPosition)
         return clone

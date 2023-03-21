@@ -253,8 +253,8 @@ function setupGUI()
     d10: 0,
     d12: 0,
     d20: 0,
-		roll: function(){},
-		clear: function(){}
+		roll: rollDices,
+		clear: clearTable
 	};
 
 	// Creacion interfaz
@@ -272,6 +272,15 @@ function setupGUI()
   h.add(effectController, "roll").name("Roll dices")
   h.add(effectController, "clear").name("Clear table")
 
+}
+
+function rollDices(){
+  //prepareDicesToRoll()
+}
+
+function clearTable(){
+  //removeDicesFromWorld()
+  //moveDicesToOriginalPlace()
 }
 
 function loadDices(){
@@ -300,6 +309,7 @@ function cloneDices(){
   let position = new THREE.Vector3(0.9, 1.90 , 1.25)
 
   for(let i = 0; i < 10; i++){
+    console.log(d4Base)
     d4s.push(d4Base.clone(position, diceMaterial))
     d6s.push(d6Base.clone(position, diceMaterial))
     d8s.push(d8Base.clone(position, diceMaterial))
