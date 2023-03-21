@@ -104,7 +104,7 @@ function initializeWorld() {
   world.addBody( rightWall );
 
 
-  const e = new esfera( 1/2, new CANNON.Vec3( -1, i+1, 0 ), materialEsfera );
+  const e = new esfera( 1/2, new CANNON.Vec3( 0, 1, 0 ), diceMaterial );
   world.addBody( e.body );
   scene.add( e.visual );
 

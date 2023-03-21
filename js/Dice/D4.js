@@ -5,13 +5,11 @@ import { Dice } from "./Dice.js";
 export class D4 extends Dice {
     
     constructor(scene){
-        super()
+        super(scene)
         this.valueRange = [1, 4]
         this.mass = 1
         this.inertia = 5
         this.scale = 50
-        this.scene = scene
-        this.cannonDice
     }
 
     getDiceValue() {}
@@ -34,7 +32,7 @@ export class D4 extends Dice {
         function (error) {
             console.log(error)
         });
-        this.cannonDice = this.createCannonShape(vertices, faces, radius)
+        this.cannonBody = this.createCannonShape(vertices, faces, radius)
     } 
 
 }

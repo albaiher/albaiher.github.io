@@ -4,14 +4,15 @@ import * as CANNON from "../../lib/cannon-es.module.js"
 
 export class Dice {
     
-    constructor(){
+    constructor(scene){
         this.loader = new GLTFLoader()
         this.threeDice = new THREE.Object3D()
+        this.scene = scene
         this.valueRange
         this.mass
         this.inertia
         this.scale
-        this.cannonDice
+        this.cannonBody
     }
 
     createCannonShape(vertices, faces, radius) {
