@@ -103,7 +103,7 @@ function initializeScene() {
     gltf.scene.scale.x = 0.003
     gltf.scene.scale.z = 0.003
     gltf.scene.scale.y = 0.003
-    gltf.scene.rotation.z = 180
+    gltf.scene.rotation.y = 180
     scene.add(gltf.scene)
   }, 
   undefined, 
@@ -132,7 +132,7 @@ function initializeScene() {
     gltf.scene.scale.x = 0.0075
     gltf.scene.scale.z = 0.0075
     gltf.scene.scale.y = 0.0075
-    gltf.scene.rotation.z = 180
+    gltf.scene.rotation.y = 180
     scene.add(gltf.scene)
   }, 
   undefined, 
