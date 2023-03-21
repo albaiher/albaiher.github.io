@@ -300,7 +300,20 @@ function clearTable(){
 }
 
 function loadBaseDices(){
+  let position = new THREE.Vector3(1, 2.19, 1.25)
+  let increment = new THREE.Vector3(0.075, 0 ,0)
 
+  d4Base.loadDice(position, diceMaterial)
+  position.add(increment)
+  d6Base.loadDice(position, diceMaterial)
+  position.add(increment)
+  d8Base.loadDice(position, diceMaterial)
+  position.add(increment)
+  d10Base.loadDice(position, diceMaterial)
+  position.add(increment)
+  d12Base.loadDice(position, diceMaterial)
+  position.add(increment)
+  d20Base.loadDice(position, diceMaterial)
 }
 
 function cloneDices(){
