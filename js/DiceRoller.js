@@ -26,7 +26,7 @@ const diceMaterial = new CANNON.Material("diceMaterial");
 
 
 initializeEnvironment()
-loadDices()
+loadBaseDices()
 setupGUI()
 render()
 
@@ -266,17 +266,26 @@ function setupGUI()
 
 function rollDices(){
   prepareDicesToRoll()
-  let position = new THREE.Vector3(0, 3 , 0)
-  d4s.push(d4Base.clone(position, diceMaterial))
+  addDicesToWorld()
 }
 
 function prepareDicesToRoll(){
-  extractDicesFor(effectController.d4,  d4s)
-  extractDicesFor(effectController.d6,  d6s)
-  extractDicesFor(effectController.d8,  d8s)
-  extractDicesFor(effectController.d10, d10s)
-  extractDicesFor(effectController.d12, d12s)
-  extractDicesFor(effectController.d20, d20s)
+  cloneDices()
+  extractDices();
+}
+
+function addDicesToWorld(){
+  for(let dice in dicesToRoll){
+    world.addBody(dice.cannonBody) 
+  }
+}
+function extractDices() {
+  extractDicesFor(effectController.d4, d4s);
+  extractDicesFor(effectController.d6, d6s);
+  extractDicesFor(effectController.d8, d8s);
+  extractDicesFor(effectController.d10, d10s);
+  extractDicesFor(effectController.d12, d12s);
+  extractDicesFor(effectController.d20, d20s);
 }
 
 function extractDicesFor(type, pull) {
@@ -290,42 +299,24 @@ function clearTable(){
   //moveDicesToOriginalPlace()
 }
 
-function loadDices(){
-  loadBaseDices()
-  setTimeout(cloneDices(), 5000)
-}
-
 function loadBaseDices(){
-  let position = new THREE.Vector3(1, 2.19, 1.25)
-  let increment = new THREE.Vector3(0.075, 0 ,0)
 
-  d4Base.loadDice(position, diceMaterial)
-  position.add(increment)
-  d6Base.loadDice(position, diceMaterial)
-  position.add(increment)
-  d8Base.loadDice(position, diceMaterial)
-  position.add(increment)
-  d10Base.loadDice(position, diceMaterial)
-  position.add(increment)
-  d12Base.loadDice(position, diceMaterial)
-  position.add(increment)
-  d20Base.loadDice(position, diceMaterial)
 }
 
 function cloneDices(){
+  cloneDicesFor(effectController.d4, d4s, d4Base)
+  cloneDicesFor(effectController.d6, d6s, d6Base)
+  cloneDicesFor(effectController.d8, d8s, d8Base)
+  cloneDicesFor(effectController.d10, d10s, d10Base)
+  cloneDicesFor(effectController.d12, d12s, d12Base)
+  cloneDicesFor(effectController.d20, d20s, d20Base)
+}
+
+function cloneDicesFor(type, pull, base) {
   let position = new THREE.Vector3(0, 3 , 0)
-
-  for(let i = 0; i < 10; i++){
-    d4s.push(d4Base.clone(position, diceMaterial))
-    d6s.push(d6Base.clone(position, diceMaterial))
-    d8s.push(d8Base.clone(position, diceMaterial))
-    d10s.push(d10Base.clone(position, diceMaterial))
-    d12s.push(d12Base.clone(position, diceMaterial))
-    d20s.push(d20Base.clone(position, diceMaterial))
+  for (let i = pull.length; i < type; i++) {
+    pull.push(base.clone(position, diceMaterial))
   }
-
-  console.log(d4s)
-  console.log(d4Base)
 }
 
 function updateAspectRatio()
