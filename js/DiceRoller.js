@@ -276,7 +276,7 @@ function prepareDicesToRoll(){
 
 function addDicesToWorld(){
   console.log(dicesToRoll)
-  for(let dice in dicesToRoll){
+  for(let dice of dicesToRoll){
     world.addBody(dice.cannonBody) 
   }
 }
