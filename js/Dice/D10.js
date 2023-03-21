@@ -29,13 +29,14 @@ export class D10 extends Dice {
         clone.threeDice = this.threeDice.clone()
         let radius = this.scale * 0.9
         clone.createCannonBody(vertices, faces, radius, material, deployPosition)
+        this.scene.add(clone.threeDice)
         return clone
     }
 
     loadDice(deployPosition, material){
         let position = new THREE.Vector3()
         position.add(deployPosition)
-        let size = 0.01
+        let size = 0.035
         let radius = this.scale * 0.9
         let scaleVector = new THREE.Vector3(size,size,size)
 

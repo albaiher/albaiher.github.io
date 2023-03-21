@@ -22,6 +22,7 @@ export class D6 extends Dice {
         clone.threeDice = this.threeDice.clone()
         let radius = this.scale * 0.9
         clone.createCannonBody(vertices, faces, radius, material, deployPosition)
+        this.scene.add(clone.threeDice)
         return clone
     }
 
@@ -30,7 +31,7 @@ export class D6 extends Dice {
         let position = new THREE.Vector3()
         position.add(deployPosition)
         let radius = this.scale * 0.9
-        let size = 0.01
+        let size = 0.035
         let scaleVector = new THREE.Vector3(size,size,size)
 
         this.loader.load("../../models/dices/d6/d6.gltf", (gltf) => {

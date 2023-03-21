@@ -26,6 +26,7 @@ export class D20 extends Dice {
         clone.threeDice = this.threeDice.clone()
         const radius = this.scale
         clone.createCannonBody(vertices, faces, radius, material, deployPosition)
+        this.scene.add(clone.threeDice)
         return clone
     }
 
@@ -34,7 +35,7 @@ export class D20 extends Dice {
         position.add(deployPosition)
 
         const radius = this.scale
-        let size = 0.01
+        let size = 0.035
         let scaleVector = new THREE.Vector3(size,size,size)
         
 
