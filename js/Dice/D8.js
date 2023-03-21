@@ -9,12 +9,12 @@ export class D8 extends Dice {
         this.valueRange = [1, 8]
         this.mass = 2
         this.inertia = 10
-        this.scale = 50
+        this.scale = 1
     }
 
     getDiceValue() {}
 
-    loadDice(deployPosition){
+    loadDice(deployPosition, material){
         let position = new THREE.Vector3()
         position.add(deployPosition)
         let vertices = [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]];
@@ -33,6 +33,6 @@ export class D8 extends Dice {
         function (error) {
             console.log(error)
         });
-        this.cannonBody = this.createCannonShape(vertices, faces, radius)
+        this.cannonBody = this.createCannonBody(vertices, faces, radius, material, deployPosition)
     } 
 }

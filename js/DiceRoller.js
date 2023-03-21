@@ -24,7 +24,7 @@ const diceMaterial = new CANNON.Material("diceMaterial");
 
 
 initializeEnvironment()
-//loadMenu()
+loadMenu()
 render()
 
 function esfera( radio, posicion, material ){
@@ -102,12 +102,6 @@ function initializeWorld() {
   rightWall.position.x = 1.1;
   rightWall.quaternion.setFromEuler(0,-Math.PI/2,0,'XYZ');
   world.addBody( rightWall );
-
-
-  dice = new esfera( 1/4, new CANNON.Vec3( 0, 4, 0 ), diceMaterial );
-  world.addBody( dice.body );
-  scene.add( dice.visual );
-
 }
 
 function initializeScene() {
@@ -250,17 +244,18 @@ function loadDiceMenu(){
   let position = new THREE.Vector3(0, 0 ,0)
   let increment = new THREE.Vector3(2, 0 ,0)
 
-  d4Menu.loadDice(position)
+  d4Menu.loadDice(position, diceMaterial)
+  world.addBody(d4Menu.cannonBody)
   position.add(increment)
-  d6Menu.loadDice(position)
+  d6Menu.loadDice(position, diceMaterial)
   position.add(increment)
-  d8Menu.loadDice(position)
+  d8Menu.loadDice(position, diceMaterial)
   position.add(increment)
-  d10Menu.loadDice(position)
+  d10Menu.loadDice(position, diceMaterial)
   position.add(increment)
-  d12Menu.loadDice(position)
+  d12Menu.loadDice(position, diceMaterial)
   position.add(increment)
-  d20Menu.loadDice(position)
+  d20Menu.loadDice(position, diceMaterial)
 }
 
 function updateAspectRatio()
