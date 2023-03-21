@@ -39,10 +39,7 @@ export class Dice {
         this.cannonBody.position.copy( position );
         this.threeDice.position.copy( this.cannonBody.position );
     }
-    getDiceValue() {}
-
-    loadDice() {}
-
+    
     standbyAnimation(deltaTime){
         this.threeDice.rotation.y += 0.1 * deltaTime
     }

@@ -277,7 +277,7 @@ function loadMenu(){
 }
 
 function loadDiceMenu(){
-  let position = new THREE.Vector3(0, 2.10 , 1.25)
+  let position = new THREE.Vector3(0.5, 2.35 , 1.25)
   let increment = new THREE.Vector3(0.2, 0 ,0)
 
   d4Menu.loadDice(position, diceMaterial)

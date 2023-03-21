@@ -2,6 +2,10 @@ import * as THREE from "../../lib/three.module.js";
 import * as CANNON from "../../lib/cannon-es.module.js"
 import { Dice } from "./Dice.js";
 
+const vertices = [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]];
+const faces = [[0, 2, 4, 1], [0, 4, 3, 2], [0, 3, 5, 3], [0, 5, 2, 4], [1, 3, 4, 5],
+        [1, 4, 2, 6], [1, 2, 5, 7], [1, 5, 3, 8]];
+
 export class D8 extends Dice {
     
     constructor(scene){
@@ -12,16 +16,20 @@ export class D8 extends Dice {
         this.scale = 1
     }
 
-    getDiceValue() {}
+    clone(deployPosition,material){
+        let clone = new D8(this.scene)
+        clone.threeDice = this.threeDice.scene.clone()
+        const radius = this.scale * 0.9
+        clone.createCannonBody(vertices, faces, radius, material, deployPosition)
+        return clone
+    }
 
     loadDice(deployPosition, material){
         let position = new THREE.Vector3()
         position.add(deployPosition)
-        let vertices = [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]];
-        let faces = [[0, 2, 4, 1], [0, 4, 3, 2], [0, 3, 5, 3], [0, 5, 2, 4], [1, 3, 4, 5],
-                [1, 4, 2, 6], [1, 2, 5, 7], [1, 5, 3, 8]];
-        let radius = this.scale * 0.9
-        let scaleVector = new THREE.Vector3(0.075,0.075,0.075)
+        let size = 0.05
+        const radius = this.scale * 0.9
+        let scaleVector = new THREE.Vector3(size,size,size)
 
         this.loader.load("../../models/dices/d8/d8.gltf", (gltf) => {
             gltf.scene.position.x = position.x
