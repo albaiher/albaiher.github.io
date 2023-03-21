@@ -52,6 +52,6 @@ export class D12 extends Dice {
         function (error) {
             console.log(error)
         });
-        this.createCannonBody(vertices, faces, radius, material, deployPosition)
+        this.createCannonBody(vertices, faces, size, material, deployPosition)
     } 
 }
