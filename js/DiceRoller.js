@@ -289,8 +289,8 @@ function loadDices(){
 }
 
 function loadBaseDices(){
-  let position = new THREE.Vector3(1.2, 2.15 , 1.25)
-  let increment = new THREE.Vector3(0.04, 0 ,0)
+  let position = new THREE.Vector3(1.2, 2.22, 1.25)
+  let increment = new THREE.Vector3(0.075, 0 ,0)
 
   d4Base.loadDice(position, diceMaterial)
   position.add(increment)
@@ -316,6 +316,8 @@ function cloneDices(){
     d12s.push(d12Base.clone(position, diceMaterial))
     d20s.push(d20Base.clone(position, diceMaterial))
   }
+
+  console.log(d4s)
 }
 
 function updateAspectRatio()
