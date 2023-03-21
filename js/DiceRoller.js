@@ -273,7 +273,16 @@ function rollDices(){
 
 function prepareDicesToRoll(){
   cloneDices()
-  extractDices();
+  extractDices()
+  setDicesPosition()
+}
+
+function setDicesPosition(){
+  let position = new Vector3(0,3,0)
+  for(let dice of dicesToRoll){
+    dice.threeDice.position.copy(position)
+    dice.cannonBody.position.copy(position)
+  }
 }
 
 function addDicesToWorld(){
