@@ -51,7 +51,7 @@ export class Dice {
     }
 }
 
-
+// Código extraido de:  https://github.com/tomo0613/offroadJS_v2/blob/355b6aabf0446deefffba6d60e24a257836916ea/src/mapModules/baseMapElementComponents.ts#L172
 const tmp_vec_1 = new CANNON.Vec3();
 const tmp_vec_2 = new CANNON.Vec3();
 const centroid = new CANNON.Vec3();
@@ -67,7 +67,7 @@ function computeFaceNormals(vertices, faces) {
         A_to_B.vsub(A, A_to_B);
         A_to_C.vsub(A, A_to_C);
 
-        const faceNormal = new Vec3().copy(A_to_B);
+        const faceNormal = new CANNON.Vec3().copy(A_to_B);
         faceNormal.cross(A_to_C, faceNormal).normalize();
 
         const centroid_to_A = tmp_vec_1.copy(A);
