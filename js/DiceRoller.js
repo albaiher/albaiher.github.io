@@ -269,6 +269,7 @@ function rollDices(){
   clearTable()
   prepareDicesToRoll()
   addDicesToWorld()
+  throwDices()
 }
 
 function prepareDicesToRoll(){
@@ -290,6 +291,13 @@ function addDicesToWorld(){
   console.log(dicesToRoll)
   for(let dice of dicesToRoll){
     world.addBody(dice.cannonBody) 
+  }
+}
+
+function throwDices(){
+  let forceDirection = new CANNON.Vec3(3,1,0)
+  for(let dice of dicesToRoll){
+    dice.throwDice(forceDirection)
   }
   throwing = true
 }
