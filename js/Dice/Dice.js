@@ -28,9 +28,10 @@ export class Dice {
             shapeFaces[i] = faces[i].slice(0, faces[i].length - 1);
         }
 
-        return new CANNON.ConvexPolyhedron(shapeVertices, shapeFaces);
-    }
+        let normals = computeFaceNormals(vertices,faces)
 
+        return new CANNON.ConvexPolyhedron(shapeVertices, shapeFaces, normals);
+    }
 
     createCannonBody(vertices, faces, radius, material, position){
         this.shape = this.createCannonShape(vertices, faces, radius);
@@ -48,4 +49,46 @@ export class Dice {
     standbyAnimation(deltaTime){
         this.threeDice.rotation.y += 0.1 * deltaTime
     }
+}
+
+
+const tmp_vec_1 = new CANNON.Vec3();
+const tmp_vec_2 = new CANNON.Vec3();
+const centroid = new CANNON.Vec3();
+
+function computeFaceNormals(vertices, faces) {
+    calculateCentroid(vertices);
+
+
+    return faces.map((faceVertexIndices) => {
+        const A = vertices[faceVertexIndices[0]];
+        const A_to_B = tmp_vec_1.copy(vertices[faceVertexIndices[1]]);
+        const A_to_C = tmp_vec_2.copy(vertices[faceVertexIndices[2]]);
+        A_to_B.vsub(A, A_to_B);
+        A_to_C.vsub(A, A_to_C);
+
+        const faceNormal = new Vec3().copy(A_to_B);
+        faceNormal.cross(A_to_C, faceNormal).normalize();
+
+        const centroid_to_A = tmp_vec_1.copy(A);
+        A.vsub(centroid, centroid_to_A);
+
+        if (faceNormal.dot(centroid_to_A) < 0) {
+            faceNormal.negate();
+        }
+
+        return faceNormal;
+    });
+}
+
+function calculateCentroid(vertices) {
+    const { length: vertexCount } = vertices;
+
+    centroid.set(0, 0, 0);
+
+    for (let i = 0; i < vertexCount; i++) {
+        centroid.vadd(vertices[i], centroid);
+    }
+
+    centroid.scale(1 / vertexCount, centroid);
 }
