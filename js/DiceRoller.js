@@ -17,12 +17,25 @@ var dices
 var cameraControls
 var clock = new THREE.Clock(true)
 var loader = new GLTFLoader()
-var suelo
+
+const groundMaterial = new CANNON.Material("groundMaterial");
+const diceMaterial = new CANNON.Material("diceMaterial");
+
 
 
 initializeEnvironment()
 //loadMenu()
 render()
+
+function esfera( radio, posicion, material ){
+	var masa = 1;
+	this.body = new CANNON.Body( {mass: masa, material: material} );
+	this.body.addShape( new CANNON.Sphere( radio ) );
+	this.body.position.copy( posicion );
+	this.visual = new THREE.Mesh( new THREE.SphereGeometry( radio ), 
+		          new THREE.MeshBasicMaterial( {wireframe: true } ) );
+	this.visual.position.copy( this.body.position );
+}
 
 function initializeEnvironment()
 {
@@ -31,23 +44,8 @@ function initializeEnvironment()
   renderer.setClearColor( new THREE.Color(0xFFFFFF) )
   document.getElementById('container').appendChild( renderer.domElement )
 
-  scene = new THREE.Scene()
-
-  world = new CANNON.World()
-  world.gravity.set(0, -9.8 , 0);
-  world.broadphase = new CANNON.NaiveBroadphase();
-  world.solver.iterations = 16;
-
-  const ground = new CANNON.Body({
-    type: CANNON.Body.STATIC,
-    shape: new CANNON.Plane(),
-  });
-
-	ground.position.y = -0.25;
-  ground.quaternion.setFromAxisAngle(new CANNON.Vec3(1,0,0),-Math.PI/2);
-  world.addBody(ground);
-
   initializeScene();
+  initializeWorld();
   initializeCameras();
   initializeLights()
 
@@ -62,84 +60,134 @@ function initializeEnvironment()
   d20Menu = new D20(scene);
 }
 
-function initializeScene() {
-  suelo = new THREE.Mesh(new THREE.PlaneGeometry(10, 10, 1, 1), new THREE.MeshNormalMaterial());
-  suelo.rotation.x = -Math.PI / 2;
-  suelo.position.y = -0.25;
-  scene.add(suelo);
+function initializeWorld() {
+  world = new CANNON.World();
+  world.gravity.set(0, -9.8, 0);
 
+  const diceGroundContactMaterial = new CANNON.ContactMaterial(
+    groundMaterial, 
+    diceMaterial, 
+    { friction: 0.7, restitution: 0.7 });
+
+  world.addContactMaterial(diceGroundContactMaterial);
+
+  // Suelo
+  const groundShape = new CANNON.Plane();
+  const ground = new CANNON.Body({ mass: 0, material: groundMaterial });
+  ground.addShape(groundShape);
+  ground.position.y = 2.19;
+  ground.quaternion.setFromAxisAngle(new CANNON.Vec3(1,0,0),-Math.PI/2);
+  world.addBody(ground);
+
+  // Paredes
+  const backWall = new CANNON.Body( {mass:0, material:groundMaterial} );
+  backWall.addShape( new CANNON.Plane() );
+  backWall.position.z = -1.1;
+  world.addBody( backWall );
+
+  const frontWall = new CANNON.Body( {mass:0, material:groundMaterial} );
+  frontWall.addShape( new CANNON.Plane() );
+  frontWall.quaternion.setFromEuler(0,Math.PI,0,'XYZ');
+  frontWall.position.z = 1.1;
+  world.addBody( frontWall );
+
+  const leftWall = new CANNON.Body( {mass:0, material:groundMaterial} );
+  leftWall.addShape( new CANNON.Plane() );
+  leftWall.position.x = -1.1;
+  leftWall.quaternion.setFromEuler(0,Math.PI/2,0,'XYZ');
+  world.addBody( leftWall );
+
+  const rightWall = new CANNON.Body( {mass:0, material:groundMaterial} );
+  rightWall.addShape( new CANNON.Plane() );
+  rightWall.position.x = 1.1;
+  rightWall.quaternion.setFromEuler(0,-Math.PI/2,0,'XYZ');
+  world.addBody( rightWall );
+
+
+  const e = new esfera( 1/2, new CANNON.Vec3( -1, i+1, 0 ), materialEsfera );
+  world.addBody( e.body );
+  scene.add( e.visual );
+
+}
+
+function initializeScene() {
+  scene = new THREE.Scene()
+  createRoom();
+  createTable();
+}
+
+function createTable() {
   loader.load("../models/wooden_table/scene.gltf", (gltf) => {
-    gltf.scene.position.x = 0
-    gltf.scene.position.z = 0
-    gltf.scene.position.y = 0
-    gltf.scene.scale.x = 4
-    gltf.scene.scale.z = 4
-    gltf.scene.scale.y = 4
-    scene.add(gltf.scene)
-  }, 
-  undefined, 
-  function (error) {
-      console.log(error)
-  });
+    gltf.scene.position.x = 0;
+    gltf.scene.position.z = 0;
+    gltf.scene.position.y = 0;
+    gltf.scene.scale.x = 4;
+    gltf.scene.scale.z = 4;
+    gltf.scene.scale.y = 4;
+    scene.add(gltf.scene);
+  },
+    undefined,
+    function (error) {
+      console.log(error);
+    });
 
   loader.load("../models/table_top/scene.gltf", (gltf) => {
-    gltf.scene.position.x = 0
-    gltf.scene.position.z = 0
-    gltf.scene.position.y = 2
-    gltf.scene.scale.x = 2
-    gltf.scene.scale.z = 2
-    gltf.scene.scale.y = 2
-    scene.add(gltf.scene)
-  }, 
-  undefined, 
-  function (error) {
-      console.log(error)
-  });
+    gltf.scene.position.x = 0;
+    gltf.scene.position.z = 0;
+    gltf.scene.position.y = 2;
+    gltf.scene.scale.x = 2;
+    gltf.scene.scale.z = 2;
+    gltf.scene.scale.y = 2;
+    scene.add(gltf.scene);
+  },
+    undefined,
+    function (error) {
+      console.log(error);
+    });
 
   loader.load("../models/dwarf/scene.gltf", (gltf) => {
-    gltf.scene.position.x = -0.25
-    gltf.scene.position.z = 1.25
-    gltf.scene.position.y = 2.19
-    gltf.scene.scale.x = 0.003
-    gltf.scene.scale.z = 0.003
-    gltf.scene.scale.y = 0.003
-    gltf.scene.rotation.y = 180
-    scene.add(gltf.scene)
-  }, 
-  undefined, 
-  function (error) {
-      console.log(error)
-  });
+    gltf.scene.position.x = -0.25;
+    gltf.scene.position.z = 1.25;
+    gltf.scene.position.y = 2.19;
+    gltf.scene.scale.x = 0.003;
+    gltf.scene.scale.z = 0.003;
+    gltf.scene.scale.y = 0.003;
+    gltf.scene.rotation.y = 210;
+    scene.add(gltf.scene);
+  },
+    undefined,
+    function (error) {
+      console.log(error);
+    });
 
   loader.load("../models/twinkle/scene.gltf", (gltf) => {
-    gltf.scene.position.x = 0
-    gltf.scene.position.z = -1.25
-    gltf.scene.position.y = 2.19
-    gltf.scene.scale.x = 0.0015
-    gltf.scene.scale.z = 0.0015
-    gltf.scene.scale.y = 0.0015
-    scene.add(gltf.scene)
-  }, 
-  undefined, 
-  function (error) {
-      console.log(error)
-  });
+    gltf.scene.position.x = 0;
+    gltf.scene.position.z = -1.25;
+    gltf.scene.position.y = 2.19;
+    gltf.scene.scale.x = 0.0015;
+    gltf.scene.scale.z = 0.0015;
+    gltf.scene.scale.y = 0.0015;
+    scene.add(gltf.scene);
+  },
+    undefined,
+    function (error) {
+      console.log(error);
+    });
 
   loader.load("../models/elven_archer/scene.gltf", (gltf) => {
-    gltf.scene.position.x = -1.25
-    gltf.scene.position.z = 0
-    gltf.scene.position.y = 2.19
-    gltf.scene.scale.x = 0.0075
-    gltf.scene.scale.z = 0.0075
-    gltf.scene.scale.y = 0.0075
-    gltf.scene.rotation.y = 180
-    scene.add(gltf.scene)
-  }, 
-  undefined, 
-  function (error) {
-      console.log(error)
-  });
-  createRoom();
+    gltf.scene.position.x = -1.25;
+    gltf.scene.position.z = 0;
+    gltf.scene.position.y = 2.19;
+    gltf.scene.scale.x = 0.0075;
+    gltf.scene.scale.z = 0.0075;
+    gltf.scene.scale.y = 0.0075;
+    gltf.scene.rotation.y = 210;
+    scene.add(gltf.scene);
+  },
+    undefined,
+    function (error) {
+      console.log(error);
+    });
 }
 
 function createRoom() {
