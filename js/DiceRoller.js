@@ -236,6 +236,7 @@ function initializeLights() {
   direccional.castShadow = true
   scene.add(direccional);
 }
+
 function loadMenu(){
   loadDiceMenu()
 }
@@ -245,7 +246,7 @@ function loadDiceMenu(){
   let increment = new THREE.Vector3(2, 0 ,0)
 
   d4Menu.loadDice(position, diceMaterial)
-  world.addBody(d4Menu.cannonBody)
+  console.log(d4Menu)
   position.add(increment)
   d6Menu.loadDice(position, diceMaterial)
   position.add(increment)
