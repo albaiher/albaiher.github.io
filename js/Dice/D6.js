@@ -30,7 +30,7 @@ export class D6 extends Dice {
         let position = new THREE.Vector3()
         position.add(deployPosition)
         let radius = this.scale * 0.9
-        let size = 0.05
+        let size = 0.01
         let scaleVector = new THREE.Vector3(size,size,size)
 
         this.loader.load("../../models/dices/d6/d6.gltf", (gltf) => {

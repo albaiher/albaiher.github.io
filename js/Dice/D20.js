@@ -34,7 +34,7 @@ export class D20 extends Dice {
         position.add(deployPosition)
 
         const radius = this.scale
-        let size = 0.05
+        let size = 0.01
         let scaleVector = new THREE.Vector3(size,size,size)
         
 

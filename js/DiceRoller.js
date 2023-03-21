@@ -13,8 +13,9 @@ import { D20 } from "./Dice/D20.js";
 const pathImages = "../images/"
 
 var renderer, scene, camera, world
-var d4Menu, d6Menu, d10Menu, d8Menu, d12Menu, d20Menu
-var dice
+var d4Base, d6Base, d10Base, d8Base, d12Base, d20Base
+var d4s = [], d6s = [], d8s = [], d10s = [], d12s = [], d20s = []
+var dicesToRoll = []
 var cameraController, effectController
 var clock = new THREE.Clock(true)
 var loader = new GLTFLoader()
@@ -25,7 +26,7 @@ const diceMaterial = new CANNON.Material("diceMaterial");
 
 
 initializeEnvironment()
-loadMenu()
+loadDices()
 setupGUI()
 render()
 
@@ -54,12 +55,12 @@ function initializeEnvironment()
   window.addEventListener('resize', updateAspectRatio )
   clock.start()
 
-  d4Menu = new D4(scene);
-  d6Menu = new D6(scene);
-  d8Menu = new D8(scene);
-  d10Menu = new D10(scene);
-  d12Menu = new D12(scene);
-  d20Menu = new D20(scene);
+  d4Base = new D4(scene);
+  d6Base = new D6(scene);
+  d8Base = new D8(scene);
+  d10Base = new D10(scene);
+  d12Base = new D12(scene);
+  d20Base = new D20(scene);
 }
 
 function initializeWorld() {
@@ -213,6 +214,7 @@ function createRoom() {
     side: THREE.BackSide,
     map: new THREE.TextureLoader().load(pathImages + "nz.png")
   }));
+
   const room = new THREE.Mesh(new THREE.BoxGeometry(size, size, size), walls);
   scene.add(room);
 }
@@ -272,26 +274,39 @@ function setupGUI()
 
 }
 
-function loadMenu(){
-  loadDiceMenu()
+function loadDices(){
+  loadBaseDices()
+  cloneDices()
 }
 
-function loadDiceMenu(){
-  let position = new THREE.Vector3(0.5, 2.35 , 1.25)
-  let increment = new THREE.Vector3(0.2, 0 ,0)
+function loadBaseDices(){
+  let position = new THREE.Vector3(0.9, 2.15 , 1.25)
+  let increment = new THREE.Vector3(0.075, 0 ,0)
 
-  d4Menu.loadDice(position, diceMaterial)
-  console.log(d4Menu)
+  d4Base.loadDice(position, diceMaterial)
   position.add(increment)
-  d6Menu.loadDice(position, diceMaterial)
+  d6Base.loadDice(position, diceMaterial)
   position.add(increment)
-  d8Menu.loadDice(position, diceMaterial)
+  d8Base.loadDice(position, diceMaterial)
   position.add(increment)
-  d10Menu.loadDice(position, diceMaterial)
+  d10Base.loadDice(position, diceMaterial)
   position.add(increment)
-  d12Menu.loadDice(position, diceMaterial)
+  d12Base.loadDice(position, diceMaterial)
   position.add(increment)
-  d20Menu.loadDice(position, diceMaterial)
+  d20Base.loadDice(position, diceMaterial)
+}
+
+function cloneDices(){
+  let position = new THREE.Vector3(0.9, 1.90 , 1.25)
+
+  for(let i = 0; i < 10; i++){
+    d4s.push(d4Base.clone(position, diceMaterial))
+    d6s.push(d6Base.clone(position, diceMaterial))
+    d8s.push(d8Base.clone(position, diceMaterial))
+    d10s.push(d10Base.clone(position, diceMaterial))
+    d12s.push(d12Base.clone(position, diceMaterial))
+    d20s.push(d20Base.clone(position, diceMaterial))
+  }
 }
 
 function updateAspectRatio()
@@ -310,12 +325,12 @@ function update()
 }
 
 function animateMenu(deltaTime) {
-  d4Menu.standbyAnimation(deltaTime);
-  d6Menu.standbyAnimation(deltaTime);
-  d8Menu.standbyAnimation(deltaTime);
-  d10Menu.standbyAnimation(deltaTime);
-  d12Menu.standbyAnimation(deltaTime);
-  d20Menu.standbyAnimation(deltaTime);
+  d4Base.standbyAnimation(deltaTime);
+  d6Base.standbyAnimation(deltaTime);
+  d8Base.standbyAnimation(deltaTime);
+  d10Base.standbyAnimation(deltaTime);
+  d12Base.standbyAnimation(deltaTime);
+  d20Base.standbyAnimation(deltaTime);
 
 }
 

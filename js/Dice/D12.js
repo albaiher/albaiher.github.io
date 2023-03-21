@@ -33,9 +33,9 @@ export class D12 extends Dice {
         let position = new THREE.Vector3()
         position.add(deployPosition)
         const radius = this.scale * 0.9
-        let size = 0.05
+        let size = 0.01
         let scaleVector = new THREE.Vector3(size,size,size)
-        
+
         this.loader.load("../../models/dices/d12/d12.gltf", (gltf) => {
             gltf.scene.position.x = position.x
             gltf.scene.position.y = position.y
