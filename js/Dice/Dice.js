@@ -21,7 +21,7 @@ export class Dice {
 
         for (let i = 0; i < vertices.length; ++i) {
             let v = vertices[i];
-            shapeVertices[i] = new CANNON.Vec3(v.x * radius, v.y * radius, v.z * radius);
+            shapeVertices[i] = new CANNON.Vec3(v[0] * radius, v[1] * radius, v[2] * radius);
         }
 
         return shapeVertices;
@@ -33,10 +33,16 @@ export class Dice {
 
         let sphere = new CANNON.Sphere(radius)
         this.cannonBody.addShape(sphere);
+        let visual = new THREE.Mesh( new THREE.SphereGeometry( radius ), new THREE.MeshBasicMaterial( {wireframe: true } ) );
+        visual.position.copy(position)
+        this.scene.add(visual)
 
         for(let offset in this.shapeOffset){
             sphere = new CANNON.Sphere(radius / 10000)
-            this.cannonBody.addShape( sphere, this.shapeOffset );
+            this.cannonBody.addShape( sphere, offset );
+            visual = new THREE.Mesh( new THREE.SphereGeometry( radius / 10000 ), new THREE.MeshBasicMaterial( {wireframe: true } ) );
+            visual.position.copy(offset)
+            this.scene.add(visual)
         }
         
         this.cannonBody.position.copy( position );
