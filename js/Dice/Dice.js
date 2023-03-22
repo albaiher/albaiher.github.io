@@ -13,29 +13,32 @@ export class Dice {
         this.inertia
         this.scale
         this.cannonBody
-        this.shape
+        this.shapeOffset
     }
 
-    createCannonShape(vertices, faces, radius) {
+    createCannonShapeOffset(vertices, radius) {
         let shapeVertices = new Array(vertices.length)
-        let shapeFaces = new Array(faces.length);
 
         for (let i = 0; i < vertices.length; ++i) {
             let v = vertices[i];
             shapeVertices[i] = new CANNON.Vec3(v.x * radius, v.y * radius, v.z * radius);
         }
-        for (let i = 0; i < faces.length; ++i) {
-            shapeFaces[i] = faces[i].slice(0, faces[i].length - 1);
-        }
 
-
-        return new CANNON.Sphere(radius);
+        return shapeVertices;
     }
 
-    createCannonBody(vertices, faces, radius, material, position){
-        this.shape = this.createCannonShape(vertices, faces, radius);
+    createCannonBody(vertices, radius, material, position){
+        this.shapeOffset = this.createCannonShapeOffset(vertices, radius);
         this.cannonBody = new CANNON.Body( {mass: this.mass, material: material} );
-        this.cannonBody.addShape( this.shape );
+
+        let sphere = new CANNON.Sphere(radius)
+        this.cannonBody.addShape(sphere);
+
+        for(let offset in this.shapeOffset){
+            sphere = new CANNON.Sphere(radius / 10000)
+            this.cannonBody.addShape( sphere, this.shapeOffset );
+        }
+        
         this.cannonBody.position.copy( position );
         this.threeDice.position.copy( this.cannonBody.position );
     }

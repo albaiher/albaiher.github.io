@@ -5,8 +5,6 @@ import * as SkeletonUtils from "../../lib/SkeletonUtils.js";
 
 let vertices = [[-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1],
 [-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1]];
-let faces = [[0, 3, 2, 1, 1], [1, 2, 6, 5, 2], [0, 1, 5, 4, 3],
-[3, 7, 6, 2, 4], [0, 4, 7, 3, 5], [4, 5, 6, 7, 6]];
 
 export class D6 extends Dice {
     
@@ -22,9 +20,8 @@ export class D6 extends Dice {
         let clone = new D6(this.scene)
         clone.threeDice = SkeletonUtils.clone(this.threeDice)
         clone.threeDice.position.copy(deployPosition)
-        let radius = this.scale * 0.9
-        let size = 0.0001
-        clone.createCannonBody(vertices, faces, size, material, deployPosition)
+        let radius = 0.0001
+        clone.createCannonBody(vertices, radius, material, deployPosition)
         this.scene.add(clone.threeDice)
         return clone
     }
@@ -33,9 +30,8 @@ export class D6 extends Dice {
         console.log(deployPosition)
         let position = new THREE.Vector3()
         position.add(deployPosition)
-        let radius = this.scale * 0.9
-        let size = 0.035
-        let scaleVector = new THREE.Vector3(size,size,size)
+        let radius = 0.035
+        let scaleVector = new THREE.Vector3(radius,radius,radius)
 
         this.loader.load("../../models/dices/d6/d6.gltf", (gltf) => {
             gltf.scene.position.x = position.x
@@ -49,6 +45,6 @@ export class D6 extends Dice {
         function (error) {
             console.log(error)
         });
-        this.createCannonBody(vertices, faces, size, material, deployPosition)
+        this.createCannonBody(vertices, radius, material, deployPosition)
     } 
 }

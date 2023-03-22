@@ -4,7 +4,6 @@ import { Dice } from "./Dice.js";
 import * as SkeletonUtils from "../../lib/SkeletonUtils.js";
 
 let vertices = [[1, 1, 1], [-1, -1, 1], [-1, 1, -1], [1, -1, -1]];
-let faces = [[1, 0, 2, 1], [0, 1, 3, 2], [0, 3, 2, 3], [1, 2, 3, 4]];
 export class D4 extends Dice {
     
     constructor(scene){
@@ -19,9 +18,8 @@ export class D4 extends Dice {
         let clone = new D4(this.scene)
         clone.threeDice = SkeletonUtils.clone(this.threeDice)
         clone.threeDice.position.copy(deployPosition)
-        let radius = this.scale * 1.2
-        let size = 0.0001
-        clone.createCannonBody(vertices, faces, size, material, deployPosition)
+        let radius = 0.0001
+        clone.createCannonBody(vertices, radius, material, deployPosition)
         this.scene.add(clone.threeDice)
         return clone
     }
@@ -29,9 +27,8 @@ export class D4 extends Dice {
     loadDice(deployPosition, material){
         let position = new THREE.Vector3()
         position.add(deployPosition)
-        let radius = this.scale * 1.2
-        let size = 0.035
-        let scaleVector = new THREE.Vector3(size,size,size)
+        let radius = 0.035
+        let scaleVector = new THREE.Vector3(radius,radius,radius)
         this.loader.load("../../models/dices/d4/d4a.gltf", (gltf) => {
             gltf.scene.position.x = position.x
             gltf.scene.position.y = position.y
@@ -44,7 +41,6 @@ export class D4 extends Dice {
         function (error) {
             console.log(error)
         });
-        this.createCannonBody(vertices, faces, size, material, deployPosition)
     } 
 
 }
