@@ -6,8 +6,8 @@ import * as SkeletonUtils from "../../lib/SkeletonUtils.js";
 let a = Math.PI * 2 / 10, k = Math.cos(a), h = 0.105;
 let vertices = [];
 for (let i = 0, b = 0; i < 10; ++i, b += a)
-    vertices.push([Math.cos(b), Math.sin(b), h * (i % 2 ? 1 : -1)]);
-vertices.push([0, 0, -1]); vertices.push([0, 0, 1]);
+    vertices.push([Math.cos(b),  h * (i % 2 ? 1 : -1), Math.sin(b)]);
+vertices.push([0, -1, 0]); vertices.push([0, 1, 0]);
 
 
 export class D10 extends Dice {

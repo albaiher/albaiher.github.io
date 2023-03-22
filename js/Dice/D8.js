@@ -3,7 +3,7 @@ import * as CANNON from "../../lib/cannon-es.module.js"
 import { Dice } from "./Dice.js";
 import * as SkeletonUtils from "../../lib/SkeletonUtils.js";
 
-const vertices = [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]];
+const vertices = [[0, 1, 0], [0, -1, 0],[-1, 0, -1], [1, 0, -1] [-1, 0, 1], [1, 0, 1]];
 
 export class D8 extends Dice {
     
