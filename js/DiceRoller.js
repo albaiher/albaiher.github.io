@@ -93,7 +93,7 @@ function initializeWorld() {
 
   const rightWall = new CANNON.Body( {mass:0, material:groundMaterial} );
   rightWall.addShape( new CANNON.Plane() );
-  rightWall.position.x = 1.1;
+  rightWall.position.x = 0.3;
   rightWall.quaternion.setFromEuler(0,-Math.PI/2,0,'XYZ');
   world.addBody( rightWall );
 }
@@ -295,7 +295,7 @@ function addDicesToWorld(){
 }
 
 function throwDices(){
-  let forceDirection = new CANNON.Vec3(3,1,0)
+  let forceDirection = new CANNON.Vec3(0,0,0)
   for(let dice of dicesToRoll){
     dice.throwDice(forceDirection)
   }
