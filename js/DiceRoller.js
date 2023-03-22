@@ -295,7 +295,7 @@ function addDicesToWorld(){
 }
 
 function throwDices(){
-  let forceDirection = new CANNON.Vec3(0,0,0)
+  let forceDirection = new CANNON.Vec3(0,0,0.25)
   for(let dice of dicesToRoll){
     dice.throwDice(forceDirection)
   }
