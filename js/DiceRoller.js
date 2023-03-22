@@ -279,7 +279,9 @@ function prepareDicesToRoll(){
 }
 
 function setDicesPosition(){
-  let position = new THREE.Vector3(-0.7,3,-1)
+  let position = new THREE.Vector3(-0.7,2.8,-1)
+  let increment = new THREE.Vector3(0.1, 0 ,0)
+  let iterator = 1
   for(let dice of dicesToRoll){
     dice.threeDice.position.copy(position)
     dice.threeDice.quaternion.copy(dice.cannonBody.quaternion)
