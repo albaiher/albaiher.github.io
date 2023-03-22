@@ -41,7 +41,7 @@ export class D4 extends Dice {
         function (error) {
             console.log(error)
         });
-        clone.createCannonBody(vertices, radius, material, deployPosition)
+        this.createCannonBody(vertices, radius, material, deployPosition)
     } 
 
 }
