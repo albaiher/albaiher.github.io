@@ -61,7 +61,7 @@ function initializeWorld() {
   const diceGroundContactMaterial = new CANNON.ContactMaterial(
     groundMaterial, 
     diceMaterial, 
-    { friction: 0.7, restitution: 0.7 });
+    { friction: 0.8, restitution: 0.2 });
 
   world.addContactMaterial(diceGroundContactMaterial);
 
