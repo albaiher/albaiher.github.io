@@ -61,7 +61,7 @@ function initializeWorld() {
   const diceGroundContactMaterial = new CANNON.ContactMaterial(
     groundMaterial, 
     diceMaterial, 
-    { friction: 0.8, restitution: 0.2 });
+    { friction: 0.7, restitution: 0.3 });
 
   world.addContactMaterial(diceGroundContactMaterial);
 
@@ -278,8 +278,8 @@ function prepareDicesToRoll(){
 
 function setDicesPosition(){
   let position = new THREE.Vector3(-0.7,2.8,-1)
-  let increment = new THREE.Vector3(0.1, 0 ,0)
-  let incrementY = new THREE.Vector3(0, 0.3 ,0)
+  let increment = new THREE.Vector3(0.2, 0 ,0)
+  let incrementY = new THREE.Vector3(0, 0.4 ,0)
   let iterator = 0
   for(let dice of dicesToRoll){
     if (iterator % 6 == 0 ) {
@@ -301,7 +301,7 @@ function addDicesToWorld(){
 }
 
 function throwDices(){
-  let forceDirection = new CANNON.Vec3(0,0,1)
+  let forceDirection = new CANNON.Vec3(0,0,2)
   for(let dice of dicesToRoll){
     dice.throwDice(forceDirection)
   }
