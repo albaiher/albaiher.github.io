@@ -16,28 +16,17 @@
         {
             "mesh" : 0,
             "name" : "d12",
-            "rotation" : [
-                0.27362552285194397,
-                0,
-                0,
-                0.9618363976478577
-            ],
             "scale" : [
                 0.5266111493110657,
                 0.5266111493110657,
                 0.5266111493110657
-            ],
-            "translation" : [
-                0,
-                0.790755033493042,
-                0
             ]
         }
     ],
     "materials" : [
         {
             "doubleSided" : true,
-            "name" : "Dice",
+            "name" : "Dice.005",
             "pbrMetallicRoughness" : {}
         },
         {
@@ -47,7 +36,7 @@
                 0.058529697358608246,
                 0.015158036723732948
             ],
-            "name" : "Numbers",
+            "name" : "Numbers.005",
             "pbrMetallicRoughness" : {
                 "baseColorFactor" : [
                     0,
@@ -60,7 +49,7 @@
     ],
     "meshes" : [
         {
-            "name" : "Cube.001",
+            "name" : "Cube.004",
             "primitives" : [
                 {
                     "attributes" : {
@@ -85,7 +74,7 @@
         {
             "bufferView" : 0,
             "componentType" : 5126,
-            "count" : 16213,
+            "count" : 26046,
             "max" : [
                 1.5900166034698486,
                 1.5900166034698486,
@@ -101,7 +90,7 @@
         {
             "bufferView" : 1,
             "componentType" : 5126,
-            "count" : 16213,
+            "count" : 26046,
             "type" : "VEC3"
         },
         {
@@ -113,7 +102,7 @@
         {
             "bufferView" : 3,
             "componentType" : 5126,
-            "count" : 45402,
+            "count" : 63570,
             "max" : [
                 1.4433729648590088,
                 1.4751651287078857,
@@ -129,7 +118,7 @@
         {
             "bufferView" : 4,
             "componentType" : 5126,
-            "count" : 45402,
+            "count" : 63570,
             "type" : "VEC3"
         },
         {
@@ -142,44 +131,44 @@
     "bufferViews" : [
         {
             "buffer" : 0,
-            "byteLength" : 194556,
+            "byteLength" : 312552,
             "byteOffset" : 0,
             "target" : 34962
         },
         {
             "buffer" : 0,
-            "byteLength" : 194556,
-            "byteOffset" : 194556,
+            "byteLength" : 312552,
+            "byteOffset" : 312552,
             "target" : 34962
         },
         {
             "buffer" : 0,
             "byteLength" : 56286,
-            "byteOffset" : 389112,
+            "byteOffset" : 625104,
             "target" : 34963
         },
         {
             "buffer" : 0,
-            "byteLength" : 544824,
-            "byteOffset" : 445400,
+            "byteLength" : 762840,
+            "byteOffset" : 681392,
             "target" : 34962
         },
         {
             "buffer" : 0,
-            "byteLength" : 544824,
-            "byteOffset" : 990224,
+            "byteLength" : 762840,
+            "byteOffset" : 1444232,
             "target" : 34962
         },
         {
             "buffer" : 0,
             "byteLength" : 134742,
-            "byteOffset" : 1535048,
+            "byteOffset" : 2207072,
             "target" : 34963
         }
     ],
     "buffers" : [
         {
-            "byteLength" : 1669792,
+            "byteLength" : 2341816,
             "uri" : "d12.bin"
         }
     ]

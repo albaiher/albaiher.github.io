@@ -16,28 +16,17 @@
         {
             "mesh" : 0,
             "name" : "d20",
-            "rotation" : [
-                0.014494265429675579,
-                0.3661796450614929,
-                -0.7627760767936707,
-                0.532799243927002
-            ],
             "scale" : [
                 1.0014729499816895,
                 1.0014731884002686,
                 1.001473069190979
-            ],
-            "translation" : [
-                0,
-                0.869646430015564,
-                0
             ]
         }
     ],
     "materials" : [
         {
             "doubleSided" : true,
-            "name" : "Dice",
+            "name" : "Dice.007",
             "pbrMetallicRoughness" : {}
         },
         {
@@ -47,7 +36,7 @@
                 0.058529697358608246,
                 0.015158036723732948
             ],
-            "name" : "Numbers",
+            "name" : "Numbers.007",
             "pbrMetallicRoughness" : {
                 "baseColorFactor" : [
                     0,
@@ -87,7 +76,7 @@
         {
             "bufferView" : 0,
             "componentType" : 5126,
-            "count" : 35234,
+            "count" : 53117,
             "max" : [
                 0.8887860774993896,
                 0.9660722017288208,
@@ -103,13 +92,13 @@
         {
             "bufferView" : 1,
             "componentType" : 5126,
-            "count" : 35234,
+            "count" : 53117,
             "type" : "VEC2"
         },
         {
             "bufferView" : 2,
             "componentType" : 5126,
-            "count" : 35234,
+            "count" : 53117,
             "type" : "VEC3"
         },
         {
@@ -121,7 +110,7 @@
         {
             "bufferView" : 4,
             "componentType" : 5126,
-            "count" : 92955,
+            "count" : 128880,
             "max" : [
                 0.8241243362426758,
                 0.7455664873123169,
@@ -137,13 +126,13 @@
         {
             "bufferView" : 5,
             "componentType" : 5126,
-            "count" : 92955,
+            "count" : 128880,
             "type" : "VEC2"
         },
         {
             "bufferView" : 6,
             "componentType" : 5126,
-            "count" : 92955,
+            "count" : 128880,
             "type" : "VEC3"
         },
         {
@@ -156,56 +145,56 @@
     "bufferViews" : [
         {
             "buffer" : 0,
-            "byteLength" : 422808,
+            "byteLength" : 637404,
             "byteOffset" : 0,
             "target" : 34962
         },
         {
             "buffer" : 0,
-            "byteLength" : 281872,
-            "byteOffset" : 422808,
+            "byteLength" : 424936,
+            "byteOffset" : 637404,
             "target" : 34962
         },
         {
             "buffer" : 0,
-            "byteLength" : 422808,
-            "byteOffset" : 704680,
+            "byteLength" : 637404,
+            "byteOffset" : 1062340,
             "target" : 34962
         },
         {
             "buffer" : 0,
             "byteLength" : 124632,
-            "byteOffset" : 1127488,
+            "byteOffset" : 1699744,
             "target" : 34963
         },
         {
             "buffer" : 0,
-            "byteLength" : 1115460,
-            "byteOffset" : 1252120,
+            "byteLength" : 1546560,
+            "byteOffset" : 1824376,
             "target" : 34962
         },
         {
             "buffer" : 0,
-            "byteLength" : 743640,
-            "byteOffset" : 2367580,
+            "byteLength" : 1031040,
+            "byteOffset" : 3370936,
             "target" : 34962
         },
         {
             "buffer" : 0,
-            "byteLength" : 1115460,
-            "byteOffset" : 3111220,
+            "byteLength" : 1546560,
+            "byteOffset" : 4401976,
             "target" : 34962
         },
         {
             "buffer" : 0,
             "byteLength" : 548700,
-            "byteOffset" : 4226680,
+            "byteOffset" : 5948536,
             "target" : 34963
         }
     ],
     "buffers" : [
         {
-            "byteLength" : 4775380,
+            "byteLength" : 6497236,
             "uri" : "d20.bin"
         }
     ]

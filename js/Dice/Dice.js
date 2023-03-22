@@ -17,11 +17,11 @@ export class Dice {
     }
 
     createCannonShapeOffset(vertices, radius) {
-        let shapeVertices = new Array(vertices.length)
+        let shapeVertices = []
 
         for (let i = 0; i < vertices.length; ++i) {
             let v = vertices[i];
-            shapeVertices[i] = new CANNON.Vec3(v[0] * radius, v[1] * radius, v[2] * radius);
+            shapeVertices.push(new CANNON.Vec3(v[0] * radius, v[1] * radius, v[2] * radius));
         }
 
         return shapeVertices;
