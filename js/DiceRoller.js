@@ -46,7 +46,7 @@ function initializeEnvironment()
   window.addEventListener('resize', updateAspectRatio )
   clock.start()
 
-  d4Base = new D4(scene);
+  //d4Base = new D4(scene);
   d6Base = new D6(scene);
   d8Base = new D8(scene);
   d10Base = new D10(scene);
@@ -238,7 +238,6 @@ function setupGUI()
 	// Definicion de los controles
 	effectController = {
 		titulo: 'Tirador de dados',
-		d4: 0,
     d6: 0,
     d8: 0,
     d10: 0,
@@ -254,7 +253,6 @@ function setupGUI()
 	// Construccion del menu
 	const h = gui.addFolder("Dados a tirar");
 	h.add(effectController, "titulo").name("Aplicacion");
-	h.add(effectController, "d4", 0, 10, 1).name("d4");
   h.add(effectController, "d6", 0, 10, 1).name("d6");
   h.add(effectController, "d8", 0, 10, 1).name("d8");
   h.add(effectController, "d10", 0, 10, 1).name("d10");
@@ -268,24 +266,30 @@ function setupGUI()
 function rollDices(){
   clearTable()
   prepareDicesToRoll()
-  //addDicesToWorld()
-  //throwDices()
+  addDicesToWorld()
+  throwDices()
 }
 
 function prepareDicesToRoll(){
   cloneDices()
   extractDices()
-  //setDicesPosition()
+  setDicesPosition()
 }
 
 function setDicesPosition(){
   let position = new THREE.Vector3(-0.7,2.8,-1)
   let increment = new THREE.Vector3(0.1, 0 ,0)
-  let iterator = 1
+  let incrementY = new THREE.Vector3(0, 0.3 ,0)
+  let iterator = 0
   for(let dice of dicesToRoll){
+    if (iterator % 6 == 0 ) {
+      position = new THREE.Vector3(-0.7,2.8,-1)
+      position.add(incrementY)
+    }
     dice.threeDice.position.copy(position)
     dice.threeDice.quaternion.copy(dice.cannonBody.quaternion)
     dice.cannonBody.position.copy(position)
+    position.add(increment)
   }
 }
 
@@ -297,14 +301,14 @@ function addDicesToWorld(){
 }
 
 function throwDices(){
-  let forceDirection = new CANNON.Vec3(0,0,0.1)
+  let forceDirection = new CANNON.Vec3(0,0,1)
   for(let dice of dicesToRoll){
     dice.throwDice(forceDirection)
   }
   throwing = true
 }
 function extractDices() {
-  extractDicesFor(effectController.d4, d4s);
+  //extractDicesFor(effectController.d4, d4s);
   extractDicesFor(effectController.d6, d6s);
   extractDicesFor(effectController.d8, d8s);
   extractDicesFor(effectController.d10, d10s);
@@ -343,8 +347,8 @@ function loadBaseDices(){
   let position = new THREE.Vector3(1, 2.19, 1.25)
   let increment = new THREE.Vector3(0.075, 0 ,0)
 
-  d4Base.loadDice(position, diceMaterial)
-  position.add(increment)
+  //d4Base.loadDice(position, diceMaterial)
+  //position.add(increment)
   d6Base.loadDice(position, diceMaterial)
   position.add(increment)
   d8Base.loadDice(position, diceMaterial)
@@ -357,7 +361,7 @@ function loadBaseDices(){
 }
 
 function cloneDices(){
-  cloneDicesFor(effectController.d4, d4s, d4Base)
+  //cloneDicesFor(effectController.d4, d4s, d4Base)
   cloneDicesFor(effectController.d6, d6s, d6Base)
   cloneDicesFor(effectController.d8, d8s, d8Base)
   cloneDicesFor(effectController.d10, d10s, d10Base)
@@ -392,16 +396,6 @@ function update()
       }
     }
     //animateMenu(deltaTime);
-}
-
-function animateMenu(deltaTime) {
-  d4Base.standbyAnimation(deltaTime);
-  d6Base.standbyAnimation(deltaTime);
-  d8Base.standbyAnimation(deltaTime);
-  d10Base.standbyAnimation(deltaTime);
-  d12Base.standbyAnimation(deltaTime);
-  d20Base.standbyAnimation(deltaTime);
-
 }
 
 function render()
