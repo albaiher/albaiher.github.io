@@ -290,6 +290,7 @@ function setDicesPosition(){
     dice.threeDice.quaternion.copy(dice.cannonBody.quaternion)
     dice.cannonBody.position.copy(position)
     position.add(increment)
+    console.log(position)
   }
 }
 
@@ -344,7 +345,7 @@ function moveDicesToOriginalPlace(){
 }
 
 function loadBaseDices(){
-  let position = new THREE.Vector3(1, 2.4, 1.25)
+  let position = new THREE.Vector3(1, 2.29, 1.25)
   let increment = new THREE.Vector3(0.075, 0 ,0)
 
   //d4Base.loadDice(position, diceMaterial)

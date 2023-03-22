@@ -33,9 +33,9 @@ export class Dice {
 
         let sphere = new CANNON.Sphere(radius)
         this.cannonBody.addShape(sphere);
-        let visual = new THREE.Mesh( new THREE.SphereGeometry( radius ), new THREE.MeshBasicMaterial( {wireframe: true } ) );
-        visual.position.copy(position)
-        this.scene.add(visual)
+        //let visual = new THREE.Mesh( new THREE.SphereGeometry( radius ), new THREE.MeshBasicMaterial( {wireframe: true } ) );
+        //visual.position.copy(position)
+        //this.scene.add(visual)
 
         for(let offset of this.shapeOffset){
             console.log(this)
@@ -44,9 +44,9 @@ export class Dice {
             console.log(offset)
             sphere = new CANNON.Sphere(radius / 100)
             this.cannonBody.addShape( sphere, offset );
-            visual = new THREE.Mesh( new THREE.SphereGeometry( radius / 100 ), new THREE.MeshBasicMaterial( {wireframe: true } ) );
-            visual.position.copy(offset)
-            this.scene.add(visual)
+            //visual = new THREE.Mesh( new THREE.SphereGeometry( radius / 100 ), new THREE.MeshBasicMaterial( {wireframe: true } ) );
+            //visual.position.copy(offset)
+            //this.scene.add(visual)
         }
         
         this.cannonBody.position.copy( position );
