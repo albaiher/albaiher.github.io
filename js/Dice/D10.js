@@ -3,11 +3,11 @@ import * as CANNON from "../../lib/cannon-es.module.js"
 import { Dice } from "./Dice.js";
 import * as SkeletonUtils from "../../lib/SkeletonUtils.js";
 
-let a = Math.PI * 2 / 10, k = Math.cos(a), h = 0.105, adjust = 1.25;
+let a = Math.PI * 2 / 10, k = Math.cos(a), h = 0.105, adjust = 1.4;
 let vertices = [];
 for (let i = 0, b = 0; i < 10; ++i, b += a)
     vertices.push([Math.cos(b) * adjust,  h * (i % 2 ? 1 : -1) * adjust, Math.sin(b) * adjust]);
-vertices.push([0, -1.25, 0]); vertices.push([0, 1.25, 0]);
+vertices.push([0, -1.4, 0]); vertices.push([0, 1.4, 0]);
 
 
 export class D10 extends Dice {
