@@ -344,7 +344,7 @@ function moveDicesToOriginalPlace(){
 }
 
 function loadBaseDices(){
-  let position = new THREE.Vector3(1, 2.19, 1.25)
+  let position = new THREE.Vector3(1, 2.4, 1.25)
   let increment = new THREE.Vector3(0.075, 0 ,0)
 
   //d4Base.loadDice(position, diceMaterial)
