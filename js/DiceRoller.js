@@ -268,18 +268,18 @@ function setupGUI()
 function rollDices(){
   clearTable()
   prepareDicesToRoll()
-  addDicesToWorld()
-  throwDices()
+  //addDicesToWorld()
+  //throwDices()
 }
 
 function prepareDicesToRoll(){
   cloneDices()
   extractDices()
-  setDicesPosition()
+  //setDicesPosition()
 }
 
 function setDicesPosition(){
-  let position = new THREE.Vector3(0,3,0)
+  let position = new THREE.Vector3(-0.7,3,-1)
   for(let dice of dicesToRoll){
     dice.threeDice.position.copy(position)
     dice.threeDice.quaternion.copy(dice.cannonBody.quaternion)
@@ -364,7 +364,7 @@ function cloneDices(){
 }
 
 function cloneDicesFor(type, pull, base) {
-  let position = new THREE.Vector3(0, 1.8 , 0)
+  let position = new THREE.Vector3(0, 0 , 0)
   for (let i = pull.length; i < type; i++) {
     pull.push(base.clone(position, diceMaterial))
   }

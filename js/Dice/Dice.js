@@ -41,7 +41,7 @@ export class Dice {
             sphere = new CANNON.Sphere(radius / 100)
             this.cannonBody.addShape( sphere, offset );
             visual = new THREE.Mesh( new THREE.SphereGeometry( radius / 100 ), new THREE.MeshBasicMaterial( {wireframe: true } ) );
-            visual.position.copy(offset.add(position))
+            visual.position.copy(offset)
             this.scene.add(visual)
         }
         
