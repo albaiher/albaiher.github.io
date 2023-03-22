@@ -38,6 +38,8 @@ export class Dice {
         this.scene.add(visual)
 
         for(let offset of this.shapeOffset){
+            console.log(this)
+            console.log(offset)
             sphere = new CANNON.Sphere(radius / 100)
             this.cannonBody.addShape( sphere, offset );
             visual = new THREE.Mesh( new THREE.SphereGeometry( radius / 100 ), new THREE.MeshBasicMaterial( {wireframe: true } ) );
